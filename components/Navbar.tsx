@@ -1,0 +1,51 @@
+import {JSX} from "react";
+import Image from "next/image";
+import { StaticImageData } from "next/image";
+import TimeDate from "./TimeDate";
+import { motion } from "motion/react";
+import sun from "@/assets/icons/sun.webp";
+import ButtonWithHoverMsg from "./ButtonWithHoverMsg";
+export default function NavBar({title, icon}:{title: string, icon: StaticImageData}): JSX.Element {
+  return (
+
+    //* Navbar Container
+    <motion.div className="flex justify-between items-center py-2 px-4 w-screen bg-win-panel"
+      initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:0.2}}
+    >
+
+      {/*//* Image and Current Section */}
+      <motion.div className="flex items-center gap-3 md:gap-5"
+        initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.2}}
+      >
+        {/*//* Image */}
+        <div className="p-1 bg-win-b border-3d bg-win-bg">
+          <Image className="w-8 h-8 md:w-10 md:h-10" src={icon} alt="icon"/>
+        </div>
+
+        {/*//* Current Section */}
+        <h1 className="text-2xl md:text-4xl font-bold">{title}.exe</h1>
+      </motion.div>
+
+      {/*//* Weather and Time Container */}
+      <motion.div className="flex items-center gap-4 md:gap-10 relative group"
+        initial={{x:100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.3}}
+      >
+
+        {/*//* Button or Weather Report */}
+        <ButtonWithHoverMsg img={sun} title="Weather.exe"
+          message={
+            <>
+              Click to view weather
+              <br />
+              (Location permission required)
+            </>
+          }
+        />
+
+        {/*//* Time */}
+        <TimeDate/>
+
+      </motion.div>
+    </motion.div>
+  )
+}
