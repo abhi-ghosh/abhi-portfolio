@@ -31,12 +31,12 @@ export default function TimeDate(): JSX.Element | null {
   //* Date Formatting
   const date: string = now
     ? now.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" })
-    : "00 XXX 0000";
+    : "xxx 00, 0000";
 
   //* Weekday Formatting
   const weekday: string = now
     ? now.toLocaleDateString("en-US", { weekday: "long" })
-    : "XXXXXXXXX";
+    : "xxxxxxxx";
 
   return (
     //* Time and Date Container
