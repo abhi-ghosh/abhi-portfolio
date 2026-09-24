@@ -11,16 +11,16 @@ export default function WeatherButton({handleWeatherClick}: WeatherButtonProps):
   return (
 
     //* Weather Button Container
-    <motion.div className="relative aspect-square md:aspect-auto">
+    <motion.div className="relative aspect-square w-full md:aspect-auto h-full">
 
       {/*//* Button */}
-      <button className="flex flex-row items-center h-full gap-3 border-3d px-3 py-2 text-2xl active:shadow-3d
+      <button className="flex flex-row p-0 md:px-3 h-full w-full justify-center items-center gap-3 border-3d text-2xl active:shadow-3d
         cursor-pointer hover:bg-win-accent/10 active:scale-95 transition-[box-shadow,background-color] duration-200"
         onClick={handleWeatherClick}
         >
 
         {/*//* Button image */}
-        <Image className="w-5 h-5 md:w-6 md:h-6" src={sun} alt="sun icon" loading="eager"/>
+        <Image className="w-8 h-8 md:w-6 md:h-6" src={sun} alt="sun icon" loading="eager"/>
 
         {/*//* Button text */}
         <p className="hidden md:block text-sm md:text-xl">Weather.exe</p>

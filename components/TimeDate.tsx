@@ -40,7 +40,7 @@ export default function TimeDate(): JSX.Element | null {
 
   return (
     //* Time and Date Container
-      <motion.div className="text-right"
+      <motion.div className="text-right self-center"
       initial={{x:100, opacity:0}} animate={{x:0, opacity:1}}
       >
 

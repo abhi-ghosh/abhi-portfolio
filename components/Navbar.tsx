@@ -32,7 +32,7 @@ export default function NavBar({title, icon, children}:NavbarProps): JSX.Element
       </motion.div>
 
       {/*//* Weather and Time Container */}
-      <motion.div className="flex items-center gap-3 md:gap-10 relative group h-full"
+      <motion.div className="flex items-stretch gap-3 md:gap-10 relative group h-full"
         initial={{x:100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.3}}
       >
 

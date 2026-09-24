@@ -21,7 +21,7 @@ export default function WeatherModule({locationData}:WeatherModuleProps): JSX.El
 
  //* Return the weather module
   return (
-    <div className="flex h-full w-auto flex-col md:flex-row items-center gap-1 md:gap-3 border-3d px-2 py-1 bg-win-main text-white">
+    <div className="flex h-full w-auto aspect-square md:aspect-auto flex-col md:flex-row items-center gap-1 md:gap-3 border-3d px-2 py-1 bg-win-main text-white">
 
       {/*//* Weather Icon only if there is a weatherObj (defensive coding) */}
       {weatherObj && (
