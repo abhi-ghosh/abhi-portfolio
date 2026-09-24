@@ -1,10 +1,11 @@
 "use client";
 import {JSX} from "react";
 import {useEffect, useState} from "react";
-export default function TimeDate(): JSX.Element {
+import { motion} from "motion/react";
+export default function TimeDate(): JSX.Element | null {
 
   //* Time and Date State
-  const [now, setNow] = useState<Date>(new Date());
+  const [now, setNow] = useState<Date | null>(null);
 
 //* Update time and date every second
 //* useState initializes `now` with the current date and time.
@@ -23,40 +24,38 @@ export default function TimeDate(): JSX.Element {
   },[]);
 
   //* Time Formatting
-  const time: string = now.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
+  const time: string = now
+    ? now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+    : "00:00:00 AM";
 
   //* Date Formatting
-  const date: string = now.toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+  const date: string = now
+    ? now.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" })
+    : "00 XXX 0000";
 
   //* Weekday Formatting
-  const weekday: string = now.toLocaleDateString("en-US", {
-    weekday: "long",
-  });
+  const weekday: string = now
+    ? now.toLocaleDateString("en-US", { weekday: "long" })
+    : "XXXXXXXXX";
 
   return (
     //* Time and Date Container
-    <div className="text-right">
+      <motion.div className="text-right"
+      initial={{x:100, opacity:0}} animate={{x:0, opacity:1}}
+      >
 
-      {/*//* Time */}
-      <p className="text-[15px] font-bold md:text-lg">
-        {time}
-      </p>
+        {/*//* Time */}
+        <p className="text-[15px] font-bold md:text-lg">
+          {time}
+        </p>
 
-      {/*//* Date, different format for mobile and desktop */}
-      <p className="text-[15px] font-bold md:text-lg">
-        {date}
-        <span className="hidden md:inline">, </span>
-        <span className="block md:inline">{weekday}</span>
-      </p>
-    </div>
+        {/*//* Date, different format for mobile and desktop */}
+        <p className="text-[15px] font-bold md:text-lg">
+          {date}
+          <span className="hidden md:inline">, </span>
+          <span className="block md:inline">{weekday}</span>
+        </p>
+      </motion.div>
   );
 
 }

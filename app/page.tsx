@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import {JSX} from "react";
+import {motion} from "motion/react"
 import Panel from "@/components/Panel";
 import {buttons, ButtonType, WhichButtonState, LocationDataType} from "@/components/data";
 import Button from "@/components/Button";
@@ -10,6 +11,14 @@ import WeatherButton from "@/components/WeatherButton";
 import WeatherModule from "@/components/WeatherModule";
 import BruhButton from "@/components/BruhButton";
 export default function Home(): JSX.Element| null {
+
+  //* Fade animation for weather modules
+  const fade = {
+    initial: { opacity:0 },
+    animate: { opacity:1 },
+    exit: { opacity:0 },
+    transition: { duration: 0.15 },
+  };
 
   //* Button States
   const [whichButton, setWhichButton] = useState<WhichButtonState>("about");
@@ -59,18 +68,33 @@ export default function Home(): JSX.Element| null {
 
   //* Weather UI
     let weatherUI: null|JSX.Element = null;
-    switch(weatherButtonState) {
-    case("error"):
-    case("loading"):
-      weatherUI = <BruhButton handleWeatherClick={handleWeatherClick} errorCode={weatherError?.code} weatherState={weatherButtonState}/>;
-      break;
-    case("success"):
-      weatherUI = <WeatherModule locationData={weather}/>;
-      break;
-    default:
-      weatherUI = <WeatherButton handleWeatherClick={handleWeatherClick}/>;
-      break;
-  }
+    switch (weatherButtonState) {
+      case "error":
+      case "loading":
+        weatherUI = (
+          <motion.div key="bruh" {...fade}>
+            <BruhButton
+              handleWeatherClick={handleWeatherClick}
+              errorCode={weatherError?.code}
+              weatherState={weatherButtonState}
+            />
+          </motion.div>
+        );
+        break;
+      case "success":
+        weatherUI = (
+          <motion.div key="module" {...fade}>
+            <WeatherModule locationData={weather} />
+          </motion.div>
+        );
+        break;
+      default:
+        weatherUI = (
+          <motion.div key="button" {...fade}>
+            <WeatherButton handleWeatherClick={handleWeatherClick} />
+          </motion.div>
+        );
+    }
 
   return (
     //* Main Container

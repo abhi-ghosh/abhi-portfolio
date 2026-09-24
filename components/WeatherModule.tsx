@@ -21,19 +21,19 @@ export default function WeatherModule({locationData}:WeatherModuleProps): JSX.El
 
  //* Return the weather module
   return (
-    <div className="flex flex-row items-center gap-1 md:gap-3 border-3d px-2 py-1 bg-win-main text-white">
+    <div className="flex h-full w-auto flex-col md:flex-row items-center gap-1 md:gap-3 border-3d px-2 py-1 bg-win-main text-white">
 
       {/*//* Weather Icon only if there is a weatherObj (defensive coding) */}
       {weatherObj && (
         <Image
           src={weatherObj.icon}
-          className="w-8 h-8 md:w-10 md:h-10 object-contain"
+          className="w-6 h-6 md:w-10 md:h-10 object-contain"
           alt="weather icon"
         />
       )}
 
       <div className="border-white/50 p-0 md:pr-3 md:border-r-2">
-        <p className="text-xl md:text-2xl">{`${locationData.temperature}°C`}</p>
+        <p className="text-sm md:text-2xl">{`${locationData.temperature}°C`}</p>
         <p className="hidden md:block text-sm">{weatherObj?.category}</p>
       </div>
 
