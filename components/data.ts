@@ -3,6 +3,15 @@ import user from "@/assets/icons/user.png";
 import folder from "@/assets/icons/folder.webp";
 import mail from "@/assets/icons/mail.webp";
 import uni from "@/assets/icons/uni.webp";
+import clear from "@/assets/weatherIcons/clear.png";
+import drizzle from "@/assets/weatherIcons/drizzle.png";
+import fog from "@/assets/weatherIcons/fog.png";
+import mainlyClear from "@/assets/weatherIcons/mainlyClear.png";
+import overcast from "@/assets/weatherIcons/overcast.png";
+import partlyCloudy from "@/assets/weatherIcons/partlyCloudy.png";
+import rain from "@/assets/weatherIcons/rain.png";
+import snow from "@/assets/weatherIcons/snow.png";
+import thunderStorm from "@/assets/weatherIcons/thunderStorm.png";
 
 type Data = {
   icon: string | StaticImageData,
@@ -21,6 +30,38 @@ type ButtonType = {
     name:"about"|"education"|"projects"|"contact",
     icon:StaticImageData
   }
+
+type WeatherType = {
+  category: string,
+  codes: number[],
+  icon: StaticImageData
+}
+
+  //* Weather API response type
+  type WeatherValueType = {
+    current: {
+      temperature_2m: number;
+      weather_code: number;
+    };
+  };
+
+  //* Location API response type
+  type LocationType = {
+      address: {
+        city?: string;
+        town?: string;
+        village?: string;
+        country: string;
+      };
+    };
+
+    //* Location data type (final returned object)
+    type LocationDataType = {
+      temperature: number,
+      weatherCode: number,
+      city: string|undefined,
+      country: string
+    }
 
 const personalData: Status = {
   name: "Abhijit Ghosh",
@@ -181,5 +222,53 @@ const buttons: ButtonType[] = [
   }
 ];
 
-export {personalData, skills, learning, buttons, infoCards, status};
-export type {Data, Tech, ButtonType, WhichButtonState};
+const weatherData: WeatherType[] = [
+  {
+    category: "Clear",
+    codes: [0],
+    icon: clear,
+  },
+  {
+    category: "Mainly clear",
+    codes: [1],
+    icon: mainlyClear,
+  },
+  {
+    category: "Partly cloudy",
+    codes: [2],
+    icon: partlyCloudy,
+  },
+  {
+    category: "Overcast",
+    codes: [3],
+    icon: overcast,
+  },
+  {
+    category: "Fog",
+    codes: [45, 48],
+    icon: fog,
+  },
+  {
+    category: "Drizzle",
+    codes: [51, 53, 55, 56, 57],
+    icon: drizzle,
+  },
+  {
+    category: "Rain",
+    codes: [61, 63, 65, 66, 67, 80, 81, 82],
+    icon: rain,
+  },
+  {
+    category: "Snow",
+    codes: [71, 73, 75, 77, 85, 86],
+    icon: snow,
+  },
+  {
+    category: "Thunderstorm",
+    codes: [95, 96, 99],
+    icon: thunderStorm,
+  },
+];
+
+export {personalData, skills, learning, buttons, infoCards, status, weatherData};
+export type {Data, Tech, ButtonType, WhichButtonState, WeatherType, WeatherValueType, LocationDataType, LocationType};

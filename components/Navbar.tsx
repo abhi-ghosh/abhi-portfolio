@@ -3,9 +3,14 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import TimeDate from "./TimeDate";
 import { motion } from "motion/react";
-import sun from "@/assets/icons/sun.webp";
-import ButtonWithHoverMsg from "./ButtonWithHoverMsg";
-export default function NavBar({title, icon}:{title: string, icon: StaticImageData}): JSX.Element {
+
+type NavbarProps = {
+  title: string;
+  icon: StaticImageData;
+  children: JSX.Element|null
+}
+
+export default function NavBar({title, icon, children}:NavbarProps): JSX.Element {
   return (
 
     //* Navbar Container
@@ -31,16 +36,8 @@ export default function NavBar({title, icon}:{title: string, icon: StaticImageDa
         initial={{x:100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.3}}
       >
 
-        {/*//* Button or Weather Report */}
-        <ButtonWithHoverMsg img={sun} title="Weather.exe"
-          message={
-            <>
-              Click to view weather
-              <br />
-              (Location permission required)
-            </>
-          }
-        />
+        {/*//* Weather Stuff */}
+        {children}
 
         {/*//* Time */}
         <TimeDate/>
