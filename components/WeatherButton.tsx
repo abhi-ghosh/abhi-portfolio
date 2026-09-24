@@ -20,7 +20,7 @@ export default function WeatherButton({handleWeatherClick}: WeatherButtonProps):
         >
 
         {/*//* Button image */}
-        <Image className="w-8 h-8 md:w-6 md:h-6" src={sun} alt="sun icon" loading="eager"/>
+        <Image className="w-7 h-7 md:w-6 md:h-6" src={sun} alt="sun icon" loading="eager"/>
 
         {/*//* Button text */}
         <p className="hidden md:block text-sm md:text-xl">Weather.exe</p>

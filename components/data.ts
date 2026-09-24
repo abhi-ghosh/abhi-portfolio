@@ -28,7 +28,9 @@ type WhichButtonState = ButtonType["name"];
 type ButtonType = {
     title:"About"|"Education"|"Projects"|"Contact",
     name:"about"|"education"|"projects"|"contact",
-    icon:StaticImageData
+    icon:StaticImageData,
+    tagPrimary:string,
+    tagSecondary:string
   }
 
 type WeatherType = {
@@ -203,22 +205,30 @@ const buttons: ButtonType[] = [
   {
     title: "About",
     name: "about",
-    icon: user
+    icon: user,
+    tagPrimary: "I like figuring things out and making things useful.",
+    tagSecondary: "More than just code."
   },
   {
     title: "Education",
     name: "education",
-    icon: uni
+    icon: uni,
+    tagPrimary: "Always learning, always building, always growing.",
+    tagSecondary: "The things that got me here."
   },
   {
     title: "Projects",
     name: "projects",
-    icon: folder
+    icon: folder,
+    tagPrimary: "Some things I've built, learned from, and also enjoyed.",
+    tagSecondary: "Built to solve problems."
   },
   {
     title: "Contact",
     name: "contact",
-    icon: mail
+    icon: mail,
+    tagPrimary: "Come say Hi, ask a question, or just share a cool idea.",
+    tagSecondary: "Read to work."
   }
 ];
 

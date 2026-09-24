@@ -10,6 +10,7 @@ import {getWeather} from "@/components/services";
 import WeatherButton from "@/components/WeatherButton";
 import WeatherModule from "@/components/WeatherModule";
 import BruhButton from "@/components/BruhButton";
+import MainTopHalf from "@/components/MainTopHalf";
 export default function Home(): JSX.Element| null {
 
   //* Fade animation for weather modules
@@ -33,7 +34,7 @@ export default function Home(): JSX.Element| null {
   const [weatherButtonState, setWeatherButtonState] = useState<"loading"|"error"|"success"|"default">("default");
 
   //* Current Button
-  const currentButton = buttons.find((button)=> button.name === whichButton);
+  const currentButton: ButtonType|undefined = buttons.find((button)=> button.name === whichButton);
 
   //* If current button is not found return null (TypeScript reccomendation)
   if (!currentButton) {
@@ -106,13 +107,20 @@ export default function Home(): JSX.Element| null {
       </NavBar>
 
       {/*//* Panel */}
-      <Panel>
-          {buttons.map((button:ButtonType, index:number): JSX.Element => (
-            <Button name={button.name} key={button.name} title={button.title} icon={button.icon}
-              setWhichButton={setWhichButton} whichButton={whichButton} delay={index * 0.1}
-            />
-          ))}
-      </Panel>
+      <div className="flex flex-col md:flex-row">
+        <Panel>
+            {buttons.map((button:ButtonType, index:number): JSX.Element => (
+              <Button name={button.name} key={button.name} title={button.title} icon={button.icon}
+                setWhichButton={setWhichButton} whichButton={whichButton} delay={index * 0.1}
+              />
+            ))}
+        </Panel>
+        <div className="h-screen w-full p-4 border-3d">
+          <MainTopHalf title={currentButton.title} tagPrimary={currentButton.tagPrimary}
+            tagSecondary={currentButton.tagSecondary}
+          />
+        </div>
+      </div>
     </div>
   );
 }
