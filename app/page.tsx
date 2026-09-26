@@ -11,6 +11,7 @@ import WeatherButton from "@/components/WeatherButton";
 import WeatherModule from "@/components/WeatherModule";
 import BruhButton from "@/components/BruhButton";
 import MainTopHalf from "@/components/MainTopHalf";
+import AboutSection from "@/components/AboutSection";
 export default function Home(): JSX.Element| null {
 
   //* Fade animation for weather modules
@@ -99,7 +100,7 @@ export default function Home(): JSX.Element| null {
 
   return (
     //* Main Container
-    <div className="bg-win-main min-h-screen ">
+    <main className="bg-win-main min-h-screen">
 
       {/*//* Navbar */}
       <NavBar title={currentButton.title} icon={currentButton.icon}>
@@ -107,7 +108,7 @@ export default function Home(): JSX.Element| null {
       </NavBar>
 
       {/*//* Panel */}
-      <div className="flex flex-col md:flex-row">
+      <section className="flex flex-col min-h-screen md:flex-row">
         <Panel>
             {buttons.map((button:ButtonType, index:number): JSX.Element => (
               <Button name={button.name} key={button.name} title={button.title} icon={button.icon}
@@ -115,12 +116,13 @@ export default function Home(): JSX.Element| null {
               />
             ))}
         </Panel>
-        <div className="h-screen w-full p-4 border-3d">
+        <section className="w-full p-4 border-3d">
           <MainTopHalf title={currentButton.title} tagPrimary={currentButton.tagPrimary}
             tagSecondary={currentButton.tagSecondary}
           />
-        </div>
-      </div>
-    </div>
+          <AboutSection />
+        </section>
+      </section>
+    </main>
   );
 }

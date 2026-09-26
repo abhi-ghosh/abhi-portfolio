@@ -14,7 +14,7 @@ export default function NavBar({title, icon, children}:NavbarProps): JSX.Element
   return (
 
     //* Navbar Container
-    <motion.nav className="flex h-18 justify-between items-stretch py-2 px-4 w-screen bg-win-panel"
+    <motion.nav className="flex h-18 justify-between items-stretch py-2 px-4 w-full bg-win-panel"
       initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:0.2}}
     >
 

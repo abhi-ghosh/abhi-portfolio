@@ -18,7 +18,7 @@ export default function Info ({children}: PanelProps): JSX.Element {
 
   return (
     <AnimatePresence>
-        <motion.div className="p-4 w-screen h-min md:w-min md:h-screen border-3d"
+        <motion.div className="p-4 w-screen md:w-min border-3d"
           initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}}
         >
 

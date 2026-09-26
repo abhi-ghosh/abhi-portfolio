@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import user from "@/assets/icons/user.png";
+import haloCE from "@/assets/icons/haloCE.webp"
 import folder from "@/assets/icons/folder.webp";
 import mail from "@/assets/icons/mail.webp";
 import uni from "@/assets/icons/uni.webp";
@@ -12,6 +12,20 @@ import partlyCloudy from "@/assets/weatherIcons/partlyCloudy.png";
 import rain from "@/assets/weatherIcons/rain.png";
 import snow from "@/assets/weatherIcons/snow.png";
 import thunderStorm from "@/assets/weatherIcons/thunderStorm.png";
+import computer from "@/assets/icons/computer.webp";
+import hitman from "@/assets/icons/hitman.webp";
+import music from "@/assets/icons/music.webp";
+import cat from "@/assets/icons/cat.webp";
+import singing from "@/assets/icons/singing.webp";
+import plane from "@/assets/icons/plane.webp";
+import watch from "@/assets/icons/watch.webp";
+import phone from "@/assets/icons/phone.webp";
+import jewel from "@/assets/icons/jewel.webp";
+import rocket from "@/assets/icons/rocket.webp";
+import fragrance from "@/assets/icons/fragrance.webp";
+
+
+
 
 type Data = {
   icon: string | StaticImageData,
@@ -21,7 +35,6 @@ type Data = {
 
 type Tech = Omit<Data, "title">
 
-type Status = Omit<Data, "icon">
 
 type WhichButtonState = ButtonType["name"];
 
@@ -65,10 +78,114 @@ type WeatherType = {
       country: string
     }
 
-const personalData: Status = {
+    type AboutMeType = {
+      intro:string,
+      bio: string,
+      closure:string,
+      skills: Tech[],
+      learning: Tech[]
+    }
+
+const personalData: {name: string, title: string} = {
   name: "Abhijit Ghosh",
   title: "Front-End Engineer"
 }
+
+const aboutMeData: AboutMeType = {
+  intro: "Hi, I'm Abhijit.",
+  bio: `I'm a front-end engineer from Kolkata, India, with a background in Food Technology and a curiosity for figuring out how things work.
+        I enjoy turning ideas into useful, polished interfaces and learning whatever I need to make them better.`,
+  closure: `Outside of code, I'm into watches, fragrances, music, gaming and anything that lets me make or tinker with something.
+            I'm happiest when I'm learning, solving problems and building things.`,
+  skills: [
+            {
+              name: "React",
+              icon: "react",
+            },
+            {
+              name: "TypeScript",
+              icon: "typescript",
+            },
+            {
+              name: "Next.js",
+              icon: "nextjs",
+            },
+            {
+              name: "HTML5",
+              icon: "html5",
+            },
+            {
+              name: "CSS3",
+              icon: "css3",
+            },
+            {
+              name: "JavaScript",
+              icon: "javascript",
+            },
+            {
+              name: "Tailwind CSS",
+              icon: "tailwindcss",
+            },
+            {
+              name: "Chakra UI",
+              icon: "chakraui",
+            },
+            {
+              name: "Bootstrap",
+              icon: "bootstrap",
+            },
+            {
+              name: "Framer Motion",
+              icon: "framermotion",
+            },
+            {
+              name: "Git",
+              icon: "git",
+            },
+            {
+              name: "GitHub",
+              icon: "github",
+            },
+            {
+              name: "Figma",
+              icon: "figma",
+            },
+            {
+              name: "Vercel",
+              icon: "vercel",
+            },
+            {
+              name: "Vite",
+              icon: "vite",
+            },
+            {
+              name: "Vitest",
+              icon: "vitest",
+            },
+            {
+              name: "Jest",
+              icon: "jest",
+            }
+          ],
+  learning: [
+              {
+                name: "Python",
+                icon: "python",
+              },
+              {
+                name: "Django",
+                icon: "django",
+              },
+              {
+                name: "SQL",
+                icon: "azuresqldatabase",
+              },
+              {
+                name: "MySQL",
+                icon: "mysql",
+              }
+            ]
+};
 
 const status: {name: string, title: string, alt: string}[]  = [
   {
@@ -82,33 +199,6 @@ const status: {name: string, title: string, alt: string}[]  = [
     alt: "globe"
   }
 ]
-
-const infoCards: Status[] = [
-  {
-    name: "time",
-    title: "Time",
-  },
-  {
-    name: "skills",
-    title: "Primary Skills",
-  },
-  {
-    name: "learning",
-    title: "Now Learning",
-  },
-  {
-    name: "date",
-    title: "Date",
-  },
-  {
-    name: "weather",
-    title: "Current Weather",
-  },
-  {
-    name: "status",
-    title: "Status",
-  },
-];
 
 const skills: Tech[] = [
   {
@@ -205,7 +295,7 @@ const buttons: ButtonType[] = [
   {
     title: "About",
     name: "about",
-    icon: user,
+    icon: haloCE,
     tagPrimary: "I like figuring things out and making things useful.",
     tagSecondary: "More than just code."
   },
@@ -280,5 +370,56 @@ const weatherData: WeatherType[] = [
   },
 ];
 
-export {personalData, skills, learning, buttons, infoCards, status, weatherData};
+const currentFocus: {focusIcon: StaticImageData, bulletIcon: StaticImageData, focusPoints: string[]} = {
+    focusIcon: rocket,
+    bulletIcon: jewel,
+    focusPoints:
+      ["Improving my front-end skills (React, Next.js, TypeScript)",
+        "Learning backend development (Python, Django, SQL)",
+        "Building personal projects",
+        "Finding remote opportunities and relocating abroad",
+        "Creating a life with more freedom and flexibility",
+      ]
+}
+
+const otherInterests: Omit<Data, "title">[] = [
+      {
+        name: "Video Games",
+        icon: hitman,
+      },
+      {
+        name: "Cats",
+        icon: cat,
+      },
+      {
+        name: "Travel",
+        icon: plane,
+      },
+      {
+        name: "Watches",
+        icon: watch,
+      },
+      {
+        name: "Fragrances",
+        icon: fragrance,
+      },
+      {
+        name: "Phones",
+        icon: phone,
+      },
+      {
+        name: "Computers",
+        icon: computer,
+      },
+      {
+        name: "Music Production",
+        icon: music,
+      },
+      {
+        name: "Singing",
+        icon: singing,
+      },
+    ]
+
+export {personalData, skills, learning, buttons, status, weatherData, aboutMeData, currentFocus, otherInterests};
 export type {Data, Tech, ButtonType, WhichButtonState, WeatherType, WeatherValueType, LocationDataType, LocationType};

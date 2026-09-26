@@ -13,6 +13,17 @@
   --color-win-border-light: #ffffff;
   --color-win-border-dark: #000000;
   --color-win-inset: #dfdfdf;
+  --animate-blink: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
 }
 
 @utility border-3d {
@@ -21,6 +32,54 @@
 
 @utility shadow-3d {
   @apply shadow-[inset_2px_2px_0_#808080]
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+
+/** Windows 98 scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+/** Vertical + horizontal track */
+::-webkit-scrollbar-track {
+  background: var(--color-win-panel);
+  border-left: 2px solid var(--color-win-border-dark);
+  box-shadow: inset 1px 1px 0 var(--color-win-muted);
+}
+
+/** Thumb */
+::-webkit-scrollbar-thumb {
+  background: var(--color-win-panel);
+  border: 2px solid var(--color-win-border-light);
+  border-right-color: var(--color-win-border-dark);
+  border-bottom-color: var(--color-win-border-dark);
+  box-shadow: inset 1px 1px 0 var(--color-win-inset);
+}
+
+/** Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-win-inset);
+}
+
+/** Pressed */
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-win-muted);
+}
+
+/** Scroll buttons */
+::-webkit-scrollbar-button {
+  width: 16px;
+  height: 16px;
+  background: var(--color-win-panel);
+  border: 2px solid var(--color-win-border-light);
+  border-right-color: var(--color-win-border-dark);
+  border-bottom-color: var(--color-win-border-dark);
 }
 
 body {
