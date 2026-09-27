@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { motion } from "motion/react";
-import {WhichButtonState, ButtonType} from "@/components/data";
+import {WhichButtonStateType, ButtonType} from "@/components/data";
 
 type ButtonProps= Omit<ButtonType, "tagPrimary" | "tagSecondary"> & {
-  setWhichButton: (whichButton: WhichButtonState) => void,
-  whichButton: WhichButtonState
+  setWhichButton: (whichButton: WhichButtonStateType) => void,
+  whichButton: WhichButtonStateType
   delay?:number
 }
 
