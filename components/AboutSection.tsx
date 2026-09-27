@@ -70,18 +70,20 @@ export default function AboutSection(){
 
       {/*//* Current focus section retro panel*/}
       <RetroPanel title="Current Focus.md" colSpan={2} delay={4}>
-        <div className="flex flex-row items-center gap-4">
-          <Image src={aboutMeData.currentFocus.focusIcon} className="w-9 h-9 bg-win-bg p-1 border-3d" alt="rocket"/>
-          <p className="text-2xl text-bold">What I&apos;m working on</p>
+        <div className="flex flex-col h-full">
+          <div className="flex flex-row items-center gap-4">
+            <Image src={aboutMeData.currentFocus.focusIcon} className="w-10 h-10 md:w-12 md:h-12 bg-white p-1 border-3d" alt="rocket"/>
+            <p className="text-3xl text-bold">What I&apos;m working on.<span className="animate-blink">_</span></p>
+          </div>
+          <ul className="flex-1 flex flex-col justify-around gap-4 mt-4 bg-win-bg py-4  text-white border-3d">
+            {aboutMeData.currentFocus.focusPoints.map((focus: string, index: number): JSX.Element =>(
+              <li key={index} className="flex flex-row items-center px-3 gap-5">
+                <Image src={aboutMeData.currentFocus.bulletIcon} className="w-5 h-5" alt="rocket"/>
+                <p className="text-lg">{focus}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="flex flex-col gap-4 mt-4 bg-win-bg py-3 text-white border-3d">
-          {aboutMeData.currentFocus.focusPoints.map((focus: string, index: number): JSX.Element =>(
-            <li key={index} className="flex flex-row items-center px-3 gap-5">
-              <Image src={aboutMeData.currentFocus.bulletIcon} className="w-5 h-5" alt="rocket"/>
-              <p className="text-lg">{focus}</p>
-            </li>
-          ))}
-        </ul>
       </RetroPanel>
 
       {/*//* Hobbies section*/}

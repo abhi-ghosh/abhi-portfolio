@@ -3,7 +3,6 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import TimeDate from "./TimeDate";
 import { AnimatePresence, motion } from "motion/react";
-import { delay } from "motion";
 
 type NavbarProps = {
   title: string;

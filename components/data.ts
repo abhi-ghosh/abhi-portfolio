@@ -248,7 +248,7 @@ const aboutMeData: AboutMeType = {
       {
         name: "Dinosaurs",
         icon: dinosaur,
-      },
+      }
     ]
 };
 
