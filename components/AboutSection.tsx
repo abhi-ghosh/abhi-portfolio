@@ -1,9 +1,11 @@
+import {JSX} from "react";
+import {motion} from "motion/react"
 import RetroPanel from "@/components/RetroPanel";
 import Skills from "@/components/Skills";
 import Image from "next/image";
 import Link from "next/link";
 import textFile from "@/assets/icons/textFile.webp"
-import {aboutMeData, currentFocus, otherInterests} from "@/components/data";
+import {aboutMeData, HobbyType} from "@/components/data";
 export default function AboutSection(){
   const skillPanels = [
     {
@@ -19,7 +21,7 @@ export default function AboutSection(){
   ];
 
   return (
-    <section className="grid grid-cols-1 min-[1200px]:grid-cols-6 gap-5">
+    <section className="sectionGrid">
     {/*//* About Me Section Custom retro panel */}
       <RetroPanel title="About Me.txt" colSpan={3}>
 
@@ -60,22 +62,22 @@ export default function AboutSection(){
       </RetroPanel>
 
       {/*//* Primary skills & learning section retro panel*/}
-      {skillPanels.map((skillPanel, index) => (
-        <RetroPanel key={index} title={skillPanel.title} colSpan={skillPanel.colSpan}>
+      {skillPanels.map((skillPanel, index:number): JSX.Element => (
+        <RetroPanel key={index} title={skillPanel.title} colSpan={skillPanel.colSpan} delay={index+1}>
           <Skills which={skillPanel.which}/>
         </RetroPanel>
       ))}
 
       {/*//* Current focus section retro panel*/}
-      <RetroPanel title="Current Focus.md" colSpan={2}>
+      <RetroPanel title="Current Focus.md" colSpan={2} delay={4}>
         <div className="flex flex-row items-center gap-4">
-          <Image src={currentFocus.focusIcon} className="w-9 h-9 bg-win-bg p-1 border-3d" alt="rocket"/>
+          <Image src={aboutMeData.currentFocus.focusIcon} className="w-9 h-9 bg-win-bg p-1 border-3d" alt="rocket"/>
           <p className="text-2xl text-bold">What I&apos;m working on</p>
         </div>
         <ul className="flex flex-col gap-4 mt-4 bg-win-bg py-3 text-white border-3d">
-          {currentFocus.focusPoints.map((focus, index)=>(
+          {aboutMeData.currentFocus.focusPoints.map((focus: string, index: number): JSX.Element =>(
             <li key={index} className="flex flex-row items-center px-3 gap-5">
-              <Image src={currentFocus.bulletIcon} className="w-5 h-5" alt="rocket"/>
+              <Image src={aboutMeData.currentFocus.bulletIcon} className="w-5 h-5" alt="rocket"/>
               <p className="text-lg">{focus}</p>
             </li>
           ))}
@@ -83,13 +85,15 @@ export default function AboutSection(){
       </RetroPanel>
 
       {/*//* Hobbies section*/}
-      <RetroPanel title="Hobbies.exe" colSpan={2}>
+      <RetroPanel title="Hobbies.exe" colSpan={2} delay={5}>
         <ul className="grid grid-cols-2 gap-6">
-          {otherInterests.map((interest, index)=>(
-            <li key={index} className="flex flex-row  items-center gap-4 min-w-0">
-              <Image src={interest.icon} className="shrink-0 w-10 h-10 bg-white p-1 border-3d" alt={`${interest.name} icon`}/>
-              <p className="text-xl min-w-0 wrap-break-word">{interest.name}</p>
-            </li>
+          {aboutMeData.hobbies.map((hobby: HobbyType, index: number)=>(
+            <motion.li key={index} className="flex flex-row  items-center gap-4 min-w-0"
+              initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: 0.15*index}}
+            >
+              <Image src={hobby.icon} className="shrink-0 w-10 h-10 bg-white p-1 border-3d" alt={`${hobby.name} icon`}/>
+              <p className="text-xl min-w-0 wrap-break-word">{hobby.name}</p>
+            </motion.li>
           ))}
         </ul>
       </RetroPanel>

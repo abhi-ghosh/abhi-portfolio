@@ -1,7 +1,9 @@
+import {motion} from "motion/react"
 type RetroPanelProps = {
   title: string,
   children: React.ReactNode,
   colSpan?: 2|3
+  delay?: number
 }
 
 
@@ -10,9 +12,12 @@ type RetroPanelProps = {
 
 const colSpanClass = { 2: "min-[1200px]:col-span-2", 3: "min-[1200px]:col-span-3" } as const;
 
-export default function RetroPanel({title,children, colSpan}: RetroPanelProps) {
+export default function RetroPanel({title, children, colSpan, delay}: RetroPanelProps) {
   return (
-    <div className={`bg-win-panel border-3d shadow-3d flex flex-col col-span-full min-w-0 ${colSpan ? colSpanClass[colSpan] : ""}`}>
+    <motion.div className={`bg-win-panel border-3d shadow-3d flex flex-col col-span-full
+        min-w-0 ${colSpan ? colSpanClass[colSpan] : ""}`}
+      initial={{opacity:0, scale:0}} animate={{opacity:1, scale:1}} exit={{opacity:0}} transition={{delay: delay ? delay * 0.1 : 0}}
+    >
       <div className="flex flex-row justify-between items-center bg-win-accent p-2">
         <p className="text-xl font-bold text-white">{title}</p>
         <div className="flex flex-row gap-1">
@@ -24,6 +29,6 @@ export default function RetroPanel({title,children, colSpan}: RetroPanelProps) {
         </div>
       </div>
       <div className="flex-1 p-3 lg:p-4 flex flex-col justify-between">{children}</div>
-    </div>
+    </motion.div>
   )
 }

@@ -31,7 +31,10 @@
 }
 
 @utility shadow-3d {
-  @apply shadow-[inset_2px_2px_0_#808080]
+  @apply shadow-[inset_2px_2px_0_#808080];
+}
+@utility sectionGrid {
+  @apply grid grid-cols-1 min-[1200px]:grid-cols-6 gap-5;
 }
 
 html {

@@ -23,20 +23,21 @@ import phone from "@/assets/icons/phone.webp";
 import jewel from "@/assets/icons/jewel.webp";
 import rocket from "@/assets/icons/rocket.webp";
 import fragrance from "@/assets/icons/fragrance.webp";
+import dinosaur from "@/assets/icons/dinosaur.webp";
 
 
 
 
-type Data = {
+type DataType = {
   icon: string | StaticImageData,
   name: string,
   title: string
 }
 
-type Tech = Omit<Data, "title">
+type TechType = Omit<DataType, "title">
 
 
-type WhichButtonState = ButtonType["name"];
+type WhichButtonStateType = ButtonType["name"];
 
 type ButtonType = {
     title:"About"|"Education"|"Projects"|"Contact",
@@ -78,12 +79,19 @@ type WeatherType = {
       country: string
     }
 
+    type HobbyType = Omit<DataType, "title">
+
     type AboutMeType = {
       intro:string,
       bio: string,
       closure:string,
-      skills: Tech[],
-      learning: Tech[]
+      skills: TechType[],
+      learning: TechType[],
+      currentFocus: {focusIcon: StaticImageData,
+          bulletIcon: StaticImageData,
+          focusPoints: string[]
+        }
+      hobbies: HobbyType[]
     }
 
 const personalData: {name: string, title: string} = {
@@ -165,6 +173,10 @@ const aboutMeData: AboutMeType = {
             {
               name: "Jest",
               icon: "jest",
+            },
+            {
+              name: "npm",
+              icon: "npm",
             }
           ],
   learning: [
@@ -184,7 +196,60 @@ const aboutMeData: AboutMeType = {
                 name: "MySQL",
                 icon: "mysql",
               }
-            ]
+            ],
+  currentFocus:{
+    focusIcon: rocket,
+    bulletIcon: jewel,
+    focusPoints:
+      ["Improving my front-end skills (React, Next.js, TypeScript)",
+        "Learning backend development (Python, Django, SQL)",
+        "Building personal projects",
+        "Finding opportunities to relocate abroad",
+        "Creating a life with more freedom and flexibility",
+      ]
+  },
+    hobbies: [
+      {
+        name: "Video Games",
+        icon: hitman,
+      },
+      {
+        name: "Cats",
+        icon: cat,
+      },
+      {
+        name: "Travel",
+        icon: plane,
+      },
+      {
+        name: "Watches",
+        icon: watch,
+      },
+      {
+        name: "Fragrances",
+        icon: fragrance,
+      },
+      {
+        name: "Phones",
+        icon: phone,
+      },
+      {
+        name: "Computers",
+        icon: computer,
+      },
+      {
+        name: "Music Production",
+        icon: music,
+      },
+      {
+        name: "Singing",
+        icon: singing,
+      },
+      {
+        name: "Dinosaurs",
+        icon: dinosaur,
+      },
+    ]
 };
 
 const status: {name: string, title: string, alt: string}[]  = [
@@ -199,96 +264,6 @@ const status: {name: string, title: string, alt: string}[]  = [
     alt: "globe"
   }
 ]
-
-const skills: Tech[] = [
-  {
-    name: "React",
-    icon: "react",
-  },
-  {
-    name: "TypeScript",
-    icon: "typescript",
-  },
-  {
-    name: "Next.js",
-    icon: "nextjs",
-  },
-  {
-    name: "HTML5",
-    icon: "html5",
-  },
-  {
-    name: "CSS3",
-    icon: "css3",
-  },
-  {
-    name: "JavaScript",
-    icon: "javascript",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "tailwindcss",
-  },
-  {
-    name: "Chakra UI",
-    icon: "chakraui",
-  },
-  {
-    name: "Bootstrap",
-    icon: "bootstrap",
-  },
-  {
-    name: "Framer Motion",
-    icon: "framermotion",
-  },
-  {
-    name: "Git",
-    icon: "git",
-  },
-  {
-    name: "GitHub",
-    icon: "github",
-  },
-  {
-    name: "Figma",
-    icon: "figma",
-  },
-  {
-    name: "Vercel",
-    icon: "vercel",
-  },
-  {
-    name: "Vite",
-    icon: "vite",
-  },
-  {
-    name: "Vitest",
-    icon: "vitest",
-  },
-  {
-    name: "Jest",
-    icon: "jest",
-  }
-];
-
-const learning: Tech[] = [
-  {
-    name: "Python",
-    icon: "python",
-  },
-  {
-    name: "Django",
-    icon: "django",
-  },
-  {
-    name: "SQL",
-    icon: "azuresqldatabase",
-  },
-  {
-    name: "MySQL",
-    icon: "mysql",
-  }
-];
 
 
 const buttons: ButtonType[] = [
@@ -370,56 +345,5 @@ const weatherData: WeatherType[] = [
   },
 ];
 
-const currentFocus: {focusIcon: StaticImageData, bulletIcon: StaticImageData, focusPoints: string[]} = {
-    focusIcon: rocket,
-    bulletIcon: jewel,
-    focusPoints:
-      ["Improving my front-end skills (React, Next.js, TypeScript)",
-        "Learning backend development (Python, Django, SQL)",
-        "Building personal projects",
-        "Finding remote opportunities and relocating abroad",
-        "Creating a life with more freedom and flexibility",
-      ]
-}
-
-const otherInterests: Omit<Data, "title">[] = [
-      {
-        name: "Video Games",
-        icon: hitman,
-      },
-      {
-        name: "Cats",
-        icon: cat,
-      },
-      {
-        name: "Travel",
-        icon: plane,
-      },
-      {
-        name: "Watches",
-        icon: watch,
-      },
-      {
-        name: "Fragrances",
-        icon: fragrance,
-      },
-      {
-        name: "Phones",
-        icon: phone,
-      },
-      {
-        name: "Computers",
-        icon: computer,
-      },
-      {
-        name: "Music Production",
-        icon: music,
-      },
-      {
-        name: "Singing",
-        icon: singing,
-      },
-    ]
-
-export {personalData, skills, learning, buttons, status, weatherData, aboutMeData, currentFocus, otherInterests};
-export type {Data, Tech, ButtonType, WhichButtonState, WeatherType, WeatherValueType, LocationDataType, LocationType};
+export {personalData, buttons, status, weatherData, aboutMeData};
+export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType, WeatherValueType, LocationDataType, LocationType, HobbyType};

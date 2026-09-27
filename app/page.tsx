@@ -3,7 +3,7 @@ import { useState } from "react";
 import {JSX} from "react";
 import {motion} from "motion/react"
 import Panel from "@/components/Panel";
-import {buttons, ButtonType, WhichButtonState, LocationDataType} from "@/components/data";
+import {buttons, ButtonType, WhichButtonStateType, LocationDataType} from "@/components/data";
 import Button from "@/components/Button";
 import NavBar from "@/components/Navbar";
 import {getWeather} from "@/components/services";
@@ -12,6 +12,9 @@ import WeatherModule from "@/components/WeatherModule";
 import BruhButton from "@/components/BruhButton";
 import MainTopHalf from "@/components/MainTopHalf";
 import AboutSection from "@/components/AboutSection";
+import EducationSection from "@/components/EducationSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import ContactSection from "@/components/ContactSection";
 export default function Home(): JSX.Element| null {
 
   //* Fade animation for weather modules
@@ -23,7 +26,7 @@ export default function Home(): JSX.Element| null {
   };
 
   //* Button States
-  const [whichButton, setWhichButton] = useState<WhichButtonState>("about");
+  const [whichButton, setWhichButton] = useState<WhichButtonStateType>("about");
 
   //* Weather state
   const [weather, setWeather] = useState<LocationDataType | null>(null);
@@ -98,6 +101,50 @@ export default function Home(): JSX.Element| null {
         );
     }
 
+  //* Main UI
+    let mainUI: JSX.Element;
+    switch (whichButton) {
+
+      case "about":
+        mainUI = (
+          <motion.div key="about" {...fade}>
+            <AboutSection />
+          </motion.div>
+        );
+        break;
+
+      case "education":
+        mainUI = (
+          <motion.div key="education" {...fade}>
+            <EducationSection />
+          </motion.div>
+        );
+        break;
+
+      case "projects":
+        mainUI = (
+          <motion.div key="projects" {...fade}>
+            <ProjectsSection />
+          </motion.div>
+        );
+        break;
+
+      case "contact":
+        mainUI = (
+          <motion.div key="contact" {...fade}>
+            <ContactSection />
+          </motion.div>
+        );
+        break;
+
+      default:
+        mainUI = (
+          <motion.div key="about" {...fade}>
+            <AboutSection />
+          </motion.div>
+        );;
+    }
+
   return (
     //* Main Container
     <main className="bg-win-main min-h-screen">
@@ -120,7 +167,7 @@ export default function Home(): JSX.Element| null {
           <MainTopHalf title={currentButton.title} tagPrimary={currentButton.tagPrimary}
             tagSecondary={currentButton.tagSecondary}
           />
-          <AboutSection />
+          {mainUI}
         </section>
       </section>
     </main>

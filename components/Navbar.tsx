@@ -3,6 +3,7 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import TimeDate from "./TimeDate";
 import { AnimatePresence, motion } from "motion/react";
+import { delay } from "motion";
 
 type NavbarProps = {
   title: string;
@@ -19,17 +20,19 @@ export default function NavBar({title, icon, children}:NavbarProps): JSX.Element
     >
 
       {/*//* Image and Current Section */}
-      <motion.div className="flex items-center gap-3 md:gap-5"
-        initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.2}}
-      >
-        {/*//* Image */}
-        <div className="p-1 h-full flex justify-center items-center bg-win-b border-3d bg-win-bg">
-          <Image className="h-full w-auto" src={icon} alt="icon"/>
-        </div>
+        <AnimatePresence mode="wait" initial={true}>
+          <motion.div key={title} className="flex items-center gap-3 md:gap-5"
+            initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.1}}
+          >
+            {/*//* Image */}
+            <div className="p-1 h-full flex justify-center items-center bg-win-b border-3d bg-win-bg">
+              <Image className="h-full w-auto" src={icon} alt="icon"/>
+            </div>
 
-        {/*//* Current Section */}
-        <h1 className="text-2xl md:text-4xl font-bold">{title}.exe</h1>
-      </motion.div>
+            {/*//* Current Section */}
+            <h1 className="text-2xl md:text-4xl font-bold">{title}.exe</h1>
+          </motion.div>
+        </AnimatePresence>
 
       {/*//* Weather and Time Container */}
       <motion.div className="flex items-stretch gap-3 md:gap-10 relative group h-full"
