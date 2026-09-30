@@ -274,7 +274,7 @@ const aboutMeData: AboutMeType = {
     }
   ],
   resume: [
-    {link:"/Abhijit_Ghosh_Resume", name: "Download Resume w/o Photo", icon: pdf},
+    {link:"/Abhijit_Ghosh_Resume.pdf", name: "Download Resume w/o Photo", icon: pdf},
     {link:"/Abhijit_Ghosh_Resume_with_Photo.pdf", name: "Download Resume w/ Photo", icon: pdf},
   ]
 };
