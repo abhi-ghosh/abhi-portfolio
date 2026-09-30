@@ -15,6 +15,8 @@ import AboutSection from "@/components/AboutSection";
 import EducationSection from "@/components/EducationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import WorkExp from "@/components/WorkExp";
+import Why from "@/components/Why";
 export default function Home(): JSX.Element| null {
 
   //* Fade animation for weather modules
@@ -129,10 +131,26 @@ export default function Home(): JSX.Element| null {
         );
         break;
 
+      case "work":
+        mainUI = (
+          <motion.div key="work" {...fade}>
+            <WorkExp />
+          </motion.div>
+        );
+        break;
+
       case "contact":
         mainUI = (
           <motion.div key="contact" {...fade}>
             <ContactSection />
+          </motion.div>
+        );
+        break;
+
+      case "why":
+        mainUI = (
+          <motion.div key="why" {...fade}>
+            <Why />
           </motion.div>
         );
         break;

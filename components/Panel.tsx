@@ -14,7 +14,7 @@ type PanelProps = {
   children: ReactNode;
 };
 
-export default function Info ({children}: PanelProps): JSX.Element {
+export default function Panel ({children}: PanelProps): JSX.Element {
 
   return (
     <AnimatePresence>

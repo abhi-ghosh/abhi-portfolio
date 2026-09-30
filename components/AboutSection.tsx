@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import textFile from "@/assets/icons/textFile.webp"
 import {aboutMeData, HobbyType} from "@/components/data";
+import RetroButton from "./RetroButton";
 export default function AboutSection(){
   const skillPanels = [
     {
@@ -50,15 +51,18 @@ export default function AboutSection(){
           </div>
         </div>
         {/*//* Download Resume Button */}
-        <Link
-          href="/resume.pdf"
-          download
-          className="bg-win-accent mt-4 text-white w-full shadow-none
-            text-xl py-3 flex items-center justify-center border-3d
-            hover:brightness-120 active:shadow-3d active:scale-98 transition-all duration-200"
-        >
-          Download Resume
-        </Link>
+        <div className="mt-4 flex flex-col md:flex-row gap-2">
+          {aboutMeData.resume.map((item, index) => (
+            <RetroButton
+              key={index}
+              url={item.link}
+              download={true}
+            >
+              <Image src={item.icon} className="w-5 h-5 mr-2" alt="resume"/>
+              {item.name}
+            </RetroButton>
+          ))}
+        </div>
       </RetroPanel>
 
       {/*//* Primary skills & learning section retro panel*/}

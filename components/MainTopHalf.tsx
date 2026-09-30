@@ -15,7 +15,7 @@ export default function MainTopHalf({title, tagPrimary, tagSecondary}: MainTopHa
           initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.1}}
         >
           <div className="flex flex-row gap-4 justify-start items-center">
-            <div className="w-4 h-4 md:w-6 md:h-6 shadow-3d border-3d bg-win-panel"/>
+            <div className="w-4 h-4 md:w-6 md:h-6 shadow-3d border-3d bg-win-panel animate-retroSpin"/>
             <h1 className="leading-none text-4xl md:text-6xl font-bold">{`${title}${title==="About" ? " Me" : ""}`}</h1>
           </div>
           <AnimatePresence mode="wait">

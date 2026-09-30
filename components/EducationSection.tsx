@@ -1,15 +1,30 @@
+import {JSX} from "react";
 import RetroPanel from "@/components/RetroPanel";
-export default function EducationSection() {
+import EducationBlock from "@/components/EducationBlock";
+import {currentlyEnrolled, formalEducation, certifications} from "@/components/data";
+export default function EducationSection():JSX.Element {
+
   return (
     <section className="sectionGrid">
+      {/*//* Formal Education */}
+
       <RetroPanel title="Formal Education.md" colSpan={3}>
-        <div className="">College</div>
+        {/*//* Keys in the data match EducationBlock's props, so I can use the spread operator. */}
+        <EducationBlock {...formalEducation} delay={0.2}/>
       </RetroPanel>
+
+      {/*//* Currently Enrolled */}
       <RetroPanel title="Currently Enrolled.md" colSpan={3} delay={1}>
-        <div className="">College</div>
+        <EducationBlock {...currentlyEnrolled} progress={true} delay={0.3}/>
       </RetroPanel>
+
+      {/*//* Certifications */}
       <RetroPanel title="Certifications.md" delay={2}>
-        <div className="">Certificates</div>
+        <div className="flex flex-col gap-4">
+          {certifications.map((certification, index) => (
+            <EducationBlock key={index} {...certification} long={true} url={certification.url} delay={index ===0 ? 0.2 : 0.3 * index}/>
+          ))}
+        </div>
       </RetroPanel>
     </section>
   );

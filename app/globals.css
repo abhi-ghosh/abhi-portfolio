@@ -14,6 +14,7 @@
   --color-win-border-dark: #000000;
   --color-win-inset: #dfdfdf;
   --animate-blink: blink 1s steps(2, start) infinite;
+  --animate-retroSpin: retroSpin 0.8s steps(4) infinite;
 }
 
 @keyframes blink {
@@ -25,6 +26,17 @@
     opacity: 0;
   }
 }
+
+@keyframes retroSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 @utility border-3d {
   @apply border-2 border-white shadow-[2px_2px_0_black];
