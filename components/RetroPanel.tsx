@@ -1,16 +1,16 @@
 import {motion} from "motion/react"
 type RetroPanelProps = {
-  title: string,
-  children: React.ReactNode,
-  colSpan?: 2|3
-  delay?: number
+  title: string;
+  children: React.ReactNode;
+  colSpan?: 2|3|4;
+  delay?: number;
 }
 
 
 //* Tailwind needs full literal class strings at build time not part of it so no `lg:col-span-${colSpan}`
 //* only part of `lg:col-span-${colSpan}` is being generated "colSpan" not the entire class, which won't work.
 
-const colSpanClass = { 2: "min-[1200px]:col-span-2", 3: "min-[1200px]:col-span-3" } as const;
+const colSpanClass = { 2: "min-[1200px]:col-span-2", 3: "min-[1200px]:col-span-3", 4: "min-[1200px]:col-span-4" } as const;
 
 export default function RetroPanel({title, children, colSpan, delay}: RetroPanelProps) {
   return (

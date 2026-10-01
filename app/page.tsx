@@ -3,7 +3,10 @@ import { useState } from "react";
 import {JSX} from "react";
 import {motion} from "motion/react"
 import Panel from "@/components/Panel";
-import {buttons, ButtonType, WhichButtonStateType, LocationDataType} from "@/components/data";
+import {
+  buttons, projects, ButtonType, WhichButtonStateType,
+  LocationDataType, ProjectType, ProjectButtonType
+} from "@/components/data";
 import Button from "@/components/Button";
 import NavBar from "@/components/Navbar";
 import {getWeather} from "@/components/services";
@@ -41,6 +44,13 @@ export default function Home(): JSX.Element| null {
 
   //* Current Button
   const currentButton: ButtonType|undefined = buttons.find((button)=> button.name === whichButton);
+
+  //* Project State
+  const [project, setProject] = useState<ProjectButtonType>("linkdefender");
+
+  //* Current Project
+  const currentProject: ProjectType|undefined = projects.find((p)=> p.id === project);
+
 
   //* If current button is not found return null (TypeScript reccomendation)
   if (!currentButton) {
@@ -126,7 +136,11 @@ export default function Home(): JSX.Element| null {
       case "projects":
         mainUI = (
           <motion.div key="projects" {...fade}>
-            <ProjectsSection />
+            <ProjectsSection
+              projects={projects}
+              setProject={setProject}
+              currentProject={currentProject}
+            />
           </motion.div>
         );
         break;

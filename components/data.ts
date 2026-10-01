@@ -34,21 +34,27 @@ import duoFunny from "@/assets/educationIcons/duoFunny.webp";
 import pdf from "@/assets/icons/pdf.webp";
 import briefcase from "@/assets/icons/briefcase.webp";
 import win from "@/assets/icons/win.webp";
+import linkDefender from "@/assets/projectIcons/linkDefender.webp";
+import patientSync from "@/assets/projectIcons/patientSync.webp";
+import pokedex from "@/assets/projectIcons/pokedex.webp";
+import littleLemon from "@/assets/projectIcons/littleLemon.webp";
 
 
 
-
+//* Data type
 type DataType = {
   icon: string | StaticImageData,
   name: string,
   title: string
 }
 
+//* Tech type
 type TechType = Omit<DataType, "title">
 
-
+//* Button state type
 type WhichButtonStateType = ButtonType["name"];
 
+//* Button type
 type ButtonType = {
     title:"About"|"Education"|"Projects"|"Contact"|"Work EXP"|"WHY?",
     name:"about"|"education"|"projects"|"contact"|"work"|"why",
@@ -57,6 +63,7 @@ type ButtonType = {
     tagSecondary:string
   }
 
+//* Weather type
 type WeatherType = {
   category: string,
   codes: number[],
@@ -89,8 +96,10 @@ type LocationDataType = {
   country: string
 }
 
+//* Hobby type
 type HobbyType = Omit<DataType, "title">
 
+//* About Me type
 type AboutMeType = {
   intro:string,
   bio: string,
@@ -116,6 +125,22 @@ type EducationType = {
     name: string;
   }[];
 };
+
+//* Projects Type
+type ProjectType = {
+  id: string;
+  name: string;
+  tagline: string;
+  year: string;
+  icon: string | StaticImageData;
+  description: string;
+  features: string[];
+  techStack: TechType[];
+  github: string;
+  live?: string;
+};
+
+type ProjectButtonType = typeof projects[number]["id"];
 
 const personalData: {name: string, title: string} = {
   name: "Abhijit Ghosh",
@@ -443,9 +468,159 @@ const certifications: (EducationType & {url:string})[] = [
   },
 ];
 
+const projects: ProjectType[] = [
+  {
+    id: "linkdefender",
+    name: "LinkDefender",
+    tagline: "Know before you click.",
+    year: "Feb 2026 - Present",
+    icon: linkDefender,
+    description:
+      "LinkDefender is a Chrome extension designed to help users identify potentially malicious or unsafe URLs before visiting them. It sends submitted URLs to the VirusTotal API for analysis, then presents the results through a clear, state-driven interface that separates loading, safe, dangerous, and error states. The extension also handles URL validation, asynchronous result polling, vendor-level security analysis, and timeout or API failures while remaining lightweight and easy to understand.",
+    features: [
+      "Scan URLs using the VirusTotal API",
+      "Safe and Dangerous security verdicts",
+      "Vendor-by-vendor security analysis",
+      "Asynchronous polling for analysis results",
+      "Client-side URL validation",
+      "Error and timeout handling",
+      "Chrome Extension built with Manifest V3",
+    ],
+    techStack: [
+      { name: "React", icon: "react" },
+      { name: "Tailwind CSS", icon: "tailwind-css" },
+      { name: "Vite", icon: "vite" },
+      { name: "VirusTotal API", icon: "virustotal" },
+      { name: "Chrome Extensions", icon: "chrome" },
+      { name: "JavaScript", icon: "javascript" },
+    ],
+    github: "https://github.com/abhi-ghosh/LinkDefender",
+  },
+
+  {
+    id: "patient-sync",
+    name: "Patient Sync",
+    tagline: "Real-time patient intake & monitoring.",
+    year: "Jul 2026 - Present",
+    icon: patientSync,
+    description:
+      "Patient Sync is a real-time patient registration and monitoring system built around WebSocket communication. As a patient fills out the registration form, their activity is synchronized instantly with a separate staff monitoring dashboard, allowing staff to see the patient's current progress, active field, validation errors, and overall completion percentage in real time. The project combines a responsive registration experience with a live monitoring interface and a persistent WebSocket connection between the client and server.",
+    features: [
+      "Real-time patient and staff synchronization",
+      "Patient registration form",
+      "Live field validation",
+      "Completion percentage tracking",
+      "Active field tracking",
+      "Validation error monitoring",
+      "Live patient activity status",
+      "Responsive desktop and mobile layouts",
+    ],
+    techStack: [
+      { name: "Next.js", icon: "nextjs" },
+      { name: "React", icon: "react" },
+      { name: "Tailwind CSS", icon: "tailwind-css" },
+      { name: "WebSockets", icon: "websocket" },
+      { name: "Node.js", icon: "nodejs" },
+      { name: "JavaScript", icon: "javascript" },
+    ],
+    github: "https://github.com/abhi-ghosh/patient-sync",
+    live: "https://patient-sync-tan.vercel.app/",
+  },
+
+  {
+    id: "portfolio",
+    name: "My Portfolio",
+    tagline: "A Windows 98-inspired dev portfolio",
+    year: "Sep 2026 - Present",
+    icon: win,
+    description:
+      "This portfolio is a personal exploration of combining a nostalgic Windows 98-inspired interface with a modern React application architecture. The site recreates the visual language of classic Windows through custom panels, buttons, borders, icons, typography, and interaction patterns while remaining responsive across modern screen sizes. It uses reusable components and data-driven sections for projects, education, certifications, skills, and other personal information, with Motion animations adding movement without losing the retro character of the interface.",
+    features: [
+      "Windows 98-inspired UI",
+      "Responsive design",
+      "Animated page transitions",
+      "Interactive project showcase",
+      "Education and certification timeline",
+      "Skills and current learning sections",
+      "Downloadable resumes",
+      "Custom retro UI components"
+    ],
+    techStack: [
+      {name:"Next.js", icon:"nextjs"},
+      {name:"React", icon:"react"},
+      {name:"TypeScript", icon:"typescript"},
+      {name:"Tailwind CSS", icon:"tailwind-css"},
+      {name:"Motion", icon:"motion"}
+    ],
+    github: "https://github.com/abhi-ghosh/abhi-portfolio",
+    live: "YOUR_DEPLOYED_URL"
+  },
+
+  {
+    id: "pokedex",
+    name: "Pokédex",
+    tagline: "Gotta know them all.",
+    year: "Jul 2026 - Present",
+    icon: pokedex,
+    description:
+      "Pokédex is a modern Pokémon exploration application built around the PokéAPI. Users can search for Pokémon through an autocomplete interface with keyboard navigation, then explore detailed information including types, abilities, base statistics, moves, and Pokémon cries. The application also includes version-aware move filtering, responsive layouts, loading and error states, dark and light modes, and Motion-powered interactions to make navigating between Pokémon feel more dynamic.",
+    features: [
+      "Pokémon search with autocomplete",
+      "Keyboard navigation",
+      "Pokémon information and abilities",
+      "Base statistics",
+      "Move explorer",
+      "Version-aware move filtering",
+      "Pokémon cries",
+      "Dark and light mode",
+      "Responsive design",
+      "Loading and error states",
+    ],
+    techStack: [
+      { name: "React", icon: "react" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "Vite", icon: "vite" },
+      { name: "Tailwind CSS", icon: "tailwind-css" },
+      { name: "Motion", icon: "motion" },
+      { name: "PokéAPI", icon: "pokeapi" },
+    ],
+    github: "https://github.com/abhi-ghosh/pokedex",
+    live: "https://pokedex-khaki-alpha.vercel.app/",
+  },
+
+  {
+    id: "little-lemon",
+    name: "Little Lemon",
+    tagline: "A modern restaurant experience.",
+    year: "Jul 2025 - Jul 2026",
+    icon: littleLemon,
+    description:
+      "Little Lemon is a responsive restaurant web application developed as the capstone project for the Meta Front-End Developer Professional Certificate. The application provides an interactive restaurant experience with a browsable menu, sorting and filtering, shopping cart functionality, dynamic quantity and total updates, and a table reservation flow with client-side validation. It also includes login and registration pages, routing between different areas of the application, and responsive layouts designed to work across desktop and mobile devices.",
+    features: [
+      "Interactive restaurant menu",
+      "Shopping cart functionality",
+      "Live quantity and total updates",
+      "Menu sorting and filtering",
+      "Table reservation system",
+      "Client-side form validation",
+      "Login and registration pages",
+      "Responsive desktop and mobile layouts",
+    ],
+    techStack: [
+      { name: "React", icon: "react" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "React Router", icon: "react-router" },
+      { name: "HTML5", icon: "html5" },
+      { name: "CSS3", icon: "css3" },
+    ],
+    github: "https://github.com/abhi-ghosh/little-lemon-capstone",
+    live: "https://little-lemon-capstone-kappa.vercel.app/",
+  },
+] as const;
+
 export {personalData, buttons, status, weatherData, aboutMeData, currentlyEnrolled,
-  formalEducation, certifications
+  formalEducation, certifications, projects
 };
 export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType,
-    WeatherValueType, LocationDataType, LocationType, HobbyType, AboutMeType, EducationType
-  };
+    WeatherValueType, LocationDataType, LocationType, HobbyType, AboutMeType, EducationType,
+    ProjectType, ProjectButtonType};

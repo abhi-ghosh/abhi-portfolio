@@ -3,6 +3,7 @@ import pfp from "@/assets/pfp.jpeg";
 import {JSX} from "react";
 import {personalData, status} from "@/components/data";
 import Status from "@/components/Status";
+import Separator from "@/components/Separator";
 import computer from "@/assets/icons/computer.webp";
 import earth from "@/assets/icons/earth.webp";
 import { ReactNode } from "react";
@@ -39,7 +40,7 @@ export default function Panel ({children}: PanelProps): JSX.Element {
 
         {/*//* Status */}
         <div className="flex flex-row md:flex-col justify-around md:justify-between gap-2
-          mt-4 p-2 md:p-0 bg-win-panel shadow-3d md:shadow-none md:bg-transparent border">
+          mt-4 mb-4 md:mb-6 p-2 md:p-0 bg-win-panel shadow-3d md:shadow-none md:bg-transparent border">
           {status.map((item, index) => (
             <Status key={item.name} icon={item.name === "ready"
               ? computer : earth} title={item.title} alt={item.alt} delay={index * 0.1}
@@ -47,11 +48,11 @@ export default function Panel ({children}: PanelProps): JSX.Element {
           ))}
         </div>
 
-        {/*//* Border */}
-        <div className="w-full bg-win-panel/50 h-0.5 my-4 md:my-6"></div>
+        {/*//* Separator Bar */}
+        <Separator bright={true}/>
 
         {/*//* Buttons */}
-        <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-4 mt-4 md:mt-6">
           {children}
         </div>
 

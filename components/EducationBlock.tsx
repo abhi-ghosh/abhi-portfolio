@@ -3,6 +3,7 @@ import Image from "next/image";
 import { EducationType } from "@/components/data";
 import {motion} from "motion/react";
 import RetroButton from "./RetroButton";
+import Separator from "./Separator";
 import cert from "@/assets/icons/cert.webp"
 import redirect from "@/assets/icons/redirect.webp"
 import internet from "@/assets/icons/internet.webp"
@@ -88,7 +89,7 @@ export default function EducationBlock({provider, title, years, description,
       }
 
       {/*//* Separator bar */}
-      <div className="w-full h-0.5 bg-win-muted/30"/>
+      <Separator/>
 
       {/*//* Progress block for ongoing education */}
       {progress &&
