@@ -56,6 +56,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   scrollbar-gutter: stable;
+  user-select: none;
 }
 
 /** Windows 98 scrollbar */
@@ -111,12 +112,20 @@ button {
   cursor: url("/cursors/pointer.cur"), pointer;
 }
 
+a.cursor-not-allowed {
+  cursor: url("/cursors/unavailable.cur"), not-allowed;
+}
+
 input,
 textarea {
   cursor: url("/cursors/text.cur"), text;
 }
 
 button:disabled {
+  cursor: url("/cursors/unavailable.cur"), not-allowed;
+}
+
+a:disabled {
   cursor: url("/cursors/unavailable.cur"), not-allowed;
 }
 

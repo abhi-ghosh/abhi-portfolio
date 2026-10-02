@@ -140,8 +140,7 @@ type ProjectType = {
   description: string;
   features: string[];
   techStack: TechType[];
-  github: string;
-  live: [boolean, string];
+  links: {name: string, url: string|false}[];
 };
 
 type ProjectButtonType = typeof projects[number]["id"];
@@ -498,8 +497,10 @@ const projects: ProjectType[] = [
       { name: "JavaScript", icon: "javascript" },
       { name: "Chrome Extensions", icon: "chrome" }
     ],
-    github: "https://github.com/abhi-ghosh/LinkDefender",
-    live: [false, "N/A"]
+    links: [
+      {name:"Source Code", url: "https://github.com/abhi-ghosh/LinkDefender"},
+      {name:"Live Demo", url: false}
+    ]
   },
 
   {
@@ -528,8 +529,10 @@ const projects: ProjectType[] = [
       { name: "Node.js", icon: "nodejs" },
       { name: "JavaScript", icon: "javascript" },
     ],
-    github: "https://github.com/abhi-ghosh/patient-sync",
-    live: [true, "https://patient-sync-tan.vercel.app/"],
+    links: [
+      {name:"Source Code", url: "https://github.com/abhi-ghosh/patient-sync"},
+      {name:"Live Demo", url: "https://patient-sync-tan.vercel.app/"}
+    ],
   },
 
   {
@@ -557,8 +560,10 @@ const projects: ProjectType[] = [
       {name:"Tailwind CSS", icon:"tailwindcss"},
       {name:"Motion", icon:"framermotion"}
     ],
-    github: "https://github.com/abhi-ghosh/abhi-portfolio",
-    live: [true, "https://abhiwillcode.vercel.app/"],
+    links: [
+      {name:"Source Code", url: "https://github.com/abhi-ghosh/abhi-portfolio"},
+      {name:"Live Demo", url: "https://abhiwillcode.vercel.app/"}
+    ],
   },
 
   {
@@ -589,8 +594,10 @@ const projects: ProjectType[] = [
       { name: "Motion", icon: "framermotion" },
       { name: "PokéAPI", icon: pokedex },
     ],
-    github: "https://github.com/abhi-ghosh/pokedex",
-    live: [true, "https://pokedex-khaki-alpha.vercel.app/"],
+    links: [
+      {name:"Source Code", url: "https://github.com/abhi-ghosh/pokedex"},
+      {name:"Live Demo", url: "https://pokedex-khaki-alpha.vercel.app/"}
+    ],
   },
 
   {
@@ -618,8 +625,10 @@ const projects: ProjectType[] = [
       { name: "HTML5", icon: "html5" },
       { name: "CSS3", icon: "css3" },
     ],
-    github: "https://github.com/abhi-ghosh/little-lemon-capstone",
-    live: [true, "https://little-lemon-capstone-kappa.vercel.app/"],
+    links: [
+      {name:"Source Code", url: "https://github.com/abhi-ghosh/little-lemon-capstone"},
+      {name:"Live Demo", url: "https://little-lemon-capstone-kappa.vercel.app/"}
+    ],
   },
 ] as const;
 
