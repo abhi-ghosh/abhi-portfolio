@@ -92,10 +92,30 @@ export default function ProjectsSection({setProject, currentProject, projects}: 
         </div>
       </RetroPanel>
 
-      <RetroPanel title="Project Details.md" colSpan={4}>
-        <p>Projects</p>
+      <RetroPanel title="Tech Stack.md" colSpan={4}>
+        <div className="flex flex-wrap gap-4 p-4 shadow-3d border-3d">
+          {currentProject.techStack.map((tech, index) => {
+            const src = typeof tech.icon === "string"
+              ? `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech.icon}/${tech.icon}-original.svg`
+              : tech.icon;
+            return (
+              <div key={index} className="flex flex-row justify-center items-center w-max
+                p-2 bg-white border-3d h-max gap-2"
+              >
+                  <Image src={src}
+                    alt={tech.name} width={30} height={30}
+                    className="w-6 h-6 md:w-8 md:h-8"
+                  />
+                <p className="text-md md:text-xl">{tech.name}</p>
+              </div>
+            )})
+          }
+        </div>
       </RetroPanel>
-      <RetroPanel title="Project Details.md" colSpan={2}>
+
+
+
+      <RetroPanel title="Links.txt" colSpan={2}>
         <p>Projects</p>
       </RetroPanel>
     </section>

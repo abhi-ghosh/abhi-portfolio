@@ -38,6 +38,10 @@ import linkDefender from "@/assets/projectIcons/linkDefender.webp";
 import patientSync from "@/assets/projectIcons/patientSync.webp";
 import pokedex from "@/assets/projectIcons/pokedex.webp";
 import littleLemon from "@/assets/projectIcons/littleLemon.webp";
+import virusTotal from "@/assets/projectIcons/virusTotal.webp";
+import websocket from "@/assets/projectIcons/websocket.webp";
+
+
 
 
 
@@ -137,7 +141,7 @@ type ProjectType = {
   features: string[];
   techStack: TechType[];
   github: string;
-  live?: string;
+  live: [boolean, string];
 };
 
 type ProjectButtonType = typeof projects[number]["id"];
@@ -488,13 +492,14 @@ const projects: ProjectType[] = [
     ],
     techStack: [
       { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwind-css" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
       { name: "Vite", icon: "vite" },
-      { name: "VirusTotal API", icon: "virustotal" },
-      { name: "Chrome Extensions", icon: "chrome" },
+      { name: "VirusTotal API", icon: virusTotal },
       { name: "JavaScript", icon: "javascript" },
+      { name: "Chrome Extensions", icon: "chrome" }
     ],
     github: "https://github.com/abhi-ghosh/LinkDefender",
+    live: [false, "N/A"]
   },
 
   {
@@ -518,13 +523,13 @@ const projects: ProjectType[] = [
     techStack: [
       { name: "Next.js", icon: "nextjs" },
       { name: "React", icon: "react" },
-      { name: "Tailwind CSS", icon: "tailwind-css" },
-      { name: "WebSockets", icon: "websocket" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "WebSockets", icon: websocket },
       { name: "Node.js", icon: "nodejs" },
       { name: "JavaScript", icon: "javascript" },
     ],
     github: "https://github.com/abhi-ghosh/patient-sync",
-    live: "https://patient-sync-tan.vercel.app/",
+    live: [true, "https://patient-sync-tan.vercel.app/"],
   },
 
   {
@@ -549,11 +554,11 @@ const projects: ProjectType[] = [
       {name:"Next.js", icon:"nextjs"},
       {name:"React", icon:"react"},
       {name:"TypeScript", icon:"typescript"},
-      {name:"Tailwind CSS", icon:"tailwind-css"},
-      {name:"Motion", icon:"motion"}
+      {name:"Tailwind CSS", icon:"tailwindcss"},
+      {name:"Motion", icon:"framermotion"}
     ],
     github: "https://github.com/abhi-ghosh/abhi-portfolio",
-    live: "YOUR_DEPLOYED_URL"
+    live: [true, "https://abhiwillcode.vercel.app/"],
   },
 
   {
@@ -580,12 +585,12 @@ const projects: ProjectType[] = [
       { name: "React", icon: "react" },
       { name: "JavaScript", icon: "javascript" },
       { name: "Vite", icon: "vite" },
-      { name: "Tailwind CSS", icon: "tailwind-css" },
-      { name: "Motion", icon: "motion" },
-      { name: "PokéAPI", icon: "pokeapi" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "Motion", icon: "framermotion" },
+      { name: "PokéAPI", icon: pokedex },
     ],
     github: "https://github.com/abhi-ghosh/pokedex",
-    live: "https://pokedex-khaki-alpha.vercel.app/",
+    live: [true, "https://pokedex-khaki-alpha.vercel.app/"],
   },
 
   {
@@ -609,12 +614,12 @@ const projects: ProjectType[] = [
     techStack: [
       { name: "React", icon: "react" },
       { name: "JavaScript", icon: "javascript" },
-      { name: "React Router", icon: "react-router" },
+      { name: "React Router", icon: "reactrouter" },
       { name: "HTML5", icon: "html5" },
       { name: "CSS3", icon: "css3" },
     ],
     github: "https://github.com/abhi-ghosh/little-lemon-capstone",
-    live: "https://little-lemon-capstone-kappa.vercel.app/",
+    live: [true, "https://little-lemon-capstone-kappa.vercel.app/"],
   },
 ] as const;
 
