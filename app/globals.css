@@ -15,6 +15,20 @@
   --color-win-inset: #dfdfdf;
   --animate-blink: blink 1s steps(2, start) infinite;
   --animate-retroSpin: retroSpin 0.8s steps(4) infinite;
+  --animate-pingRetro: pingRetro 1.5s steps(3) infinite;
+}
+
+@keyframes pingRetro {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 @keyframes blink {
@@ -129,6 +143,6 @@ a:disabled {
   cursor: url("/cursors/unavailable.cur"), not-allowed;
 }
 
-p,h1,h2,h3 {
+p,h1,h2,h3,button,a {
   line-height: 1;
 }

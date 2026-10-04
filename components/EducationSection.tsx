@@ -1,6 +1,8 @@
 import {JSX} from "react";
 import RetroPanel from "@/components/RetroPanel";
 import EducationBlock from "@/components/EducationBlock";
+import TinyInfoBlock from "./TinyInfoBlock";
+import internet from "@/assets/icons/internet.webp"
 import {currentlyEnrolled, formalEducation, certifications} from "@/components/data";
 export default function EducationSection():JSX.Element {
 
@@ -15,7 +17,12 @@ export default function EducationSection():JSX.Element {
 
       {/*//* Currently Enrolled */}
       <RetroPanel title="Currently Enrolled.md" colSpan={3} delay={1}>
-        <EducationBlock {...currentlyEnrolled} progress={true} delay={0.3}/>
+        <EducationBlock {...currentlyEnrolled} delay={0.3}>
+          <TinyInfoBlock animate="spin" primary={"IN PROGRESS"}
+            secondary={"Certificate pending completion"}
+            logo={internet} color={"green"}
+          />
+        </EducationBlock>
       </RetroPanel>
 
       {/*//* Certifications */}

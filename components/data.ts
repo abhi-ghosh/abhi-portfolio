@@ -40,10 +40,12 @@ import pokedex from "@/assets/projectIcons/pokedex.webp";
 import littleLemon from "@/assets/projectIcons/littleLemon.webp";
 import virusTotal from "@/assets/projectIcons/virusTotal.webp";
 import websocket from "@/assets/projectIcons/websocket.webp";
-
-
-
-
+import envelope from "@/assets/contactIcons/envelope.webp";
+import github from "@/assets/contactIcons/github.webp";
+import greenorb from "@/assets/icons/greenorb.webp";
+import jobsdb from "@/assets/contactIcons/jobsdb.webp";
+import linkedin from "@/assets/contactIcons/linkedin.webp";
+import network from "@/assets/icons/network.webp";
 
 //* Data type
 type DataType = {
@@ -103,6 +105,13 @@ type LocationDataType = {
 //* Hobby type
 type HobbyType = Omit<DataType, "title">
 
+//*Resume type
+type ResumeType = {
+  link: string,
+  name: string,
+  icon: StaticImageData
+}
+
 //* About Me type
 type AboutMeType = {
   intro:string,
@@ -115,7 +124,7 @@ type AboutMeType = {
       focusPoints: string[]
     }
   hobbies: HobbyType[],
-  resume: {link: string, name: string, icon: StaticImageData}[]
+  resume: ResumeType[]
 }
 
 //* Education type
@@ -142,6 +151,37 @@ type ProjectType = {
   techStack: TechType[];
   links: {name: string, url: string|false}[];
 };
+
+//*Link Type
+type LinkType = {
+  name:string;
+  url:string;
+  tagline:string;
+  icon:StaticImageData;
+};
+
+type ContactStatusType = {
+    label:string;
+    message:string;
+    logo: StaticImageData;
+    color: "green"|"blue"|"yellow"|"red";
+    animate: "ping"|"spin"|"none";
+    smallIcon:boolean;
+}
+
+//* Contact Type
+type ContactType = {
+  intro:{
+    title: string;
+    description: string;
+    quote: string;
+    quoteB:string;
+  };
+  availability: string[];
+  links: LinkType[];
+  responseTime:string;
+  status: ContactStatusType[];
+}
 
 type ProjectButtonType = typeof projects[number]["id"];
 
@@ -630,11 +670,76 @@ const projects: ProjectType[] = [
       {name:"Live Demo", url: "https://little-lemon-capstone-kappa.vercel.app/"}
     ],
   },
-] as const;
+];
+
+const contactData: ContactType = {
+  intro: {
+    title: "I'd love to hear from you!",
+    description:
+      "Whether it's a job opportunity, a project idea, feedback or just a friendly message, feel free to reach out. I'm always open to interesting conversations and new opportunities.",
+    quote: "I stay curious, keep building & make myself useful.",
+    quoteB:"If I don't know how to solve it, I'll figure it out.",
+  },
+
+  availability: [
+    "Full-time employment",
+    "Front-end roles",
+    "Remote positions",
+    "International opportunities",
+    "Willing to relocate",
+  ],
+
+  links: [
+    {
+      name: "Email",
+      url: "mailto:a7ghosh@gmail.com",
+      tagline:"Slide into my email, efficiently.",
+      icon: envelope,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/abhi-ghosh",
+      tagline:"Come see what I broke, then fixed.",
+      icon: github,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/abhiwillcode",
+      tagline:"Look mom, I'm a professional.",
+      icon: linkedin,
+    },
+    {
+      name: "JobsDB",
+      url: "https://th.jobsdb.com/profiles/abhijit-ghosh-p67jmjrk3c",
+      tagline:"I love coding and lots of money.",
+      icon: jobsdb,
+    },
+  ],
+
+  responseTime: "I usually respond within 24 hours.",
+
+  status: [{
+    label:"CONNECTION PROTOCOL",
+    message:"Replies usually within 24 hours",
+    logo: network,
+    color: "blue",
+    animate: "none",
+    smallIcon: false,
+  },
+  {
+      label: "ONLINE",
+      message: "Ready to connect",
+      logo: greenorb,
+      color: "green",
+      animate: "ping",
+      smallIcon: true,
+    }
+  ]
+}
 
 export {personalData, buttons, status, weatherData, aboutMeData, currentlyEnrolled,
-  formalEducation, certifications, projects
+  formalEducation, certifications, projects, contactData
 };
 export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType,
     WeatherValueType, LocationDataType, LocationType, HobbyType, AboutMeType, EducationType,
-    ProjectType, ProjectButtonType};
+    ProjectType, ProjectButtonType, LinkType, ResumeType, ContactStatusType};

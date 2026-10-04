@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { motion } from "motion/react";
+import {JSX} from "react";
 import {WhichButtonStateType, ButtonType} from "@/components/data";
 
 type ButtonProps= Omit<ButtonType, "tagPrimary" | "tagSecondary"> & {
@@ -8,7 +9,7 @@ type ButtonProps= Omit<ButtonType, "tagPrimary" | "tagSecondary"> & {
   delay?:number
 }
 
-export default function Button({title, icon, name, setWhichButton, whichButton, delay } : ButtonProps) {
+export default function Button({title, icon, name, setWhichButton, whichButton, delay } : ButtonProps): JSX.Element {
   return (
     //* Button Container
     <motion.button className={`flex flex-row items-center justify-start gap-3 border-3d

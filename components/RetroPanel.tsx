@@ -1,4 +1,5 @@
-import {AnimatePresence, motion} from "motion/react"
+import {motion} from "motion/react"
+import {JSX} from "react"
 type RetroPanelProps = {
   title: string;
   children: React.ReactNode;
@@ -10,9 +11,9 @@ type RetroPanelProps = {
 //* Tailwind needs full literal class strings at build time not part of it so no `lg:col-span-${colSpan}`
 //* only part of `lg:col-span-${colSpan}` is being generated "colSpan" not the entire class, which won't work.
 
-const colSpanClass = { 2: "min-[1200px]:col-span-2", 3: "min-[1200px]:col-span-3", 4: "min-[1200px]:col-span-4" } as const;
+const colSpanClass: Record<2 | 3 | 4, string> = { 2: "min-[1200px]:col-span-2", 3: "min-[1200px]:col-span-3", 4: "min-[1200px]:col-span-4" };
 
-export default function RetroPanel({title, children, colSpan, delay}: RetroPanelProps) {
+export default function RetroPanel({title, children, colSpan, delay}: RetroPanelProps): JSX.Element {
   return (
       <motion.div className={`bg-win-panel border-3d shadow-3d flex flex-col col-span-full
           min-w-0 ${colSpan ? colSpanClass[colSpan] : ""}`}

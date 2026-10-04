@@ -3,12 +3,17 @@ import {motion} from "motion/react"
 import RetroPanel from "@/components/RetroPanel";
 import Skills from "@/components/Skills";
 import Image from "next/image";
-import Link from "next/link";
 import textFile from "@/assets/icons/textFile.webp"
-import {aboutMeData, HobbyType} from "@/components/data";
-import RetroButton from "./RetroButton";
-export default function AboutSection(){
-  const skillPanels = [
+import {aboutMeData, HobbyType, ResumeType} from "@/components/data";
+import RetroButton from "@/components/RetroButton";
+import CustomIntro from "@/components/CustomIntro";
+type SkillsPanelsType = {
+  title: string;
+  colSpan: 2|3|4;
+  which: "skills"|"learning";
+}
+export default function AboutSection(): JSX.Element{
+  const skillPanels: SkillsPanelsType[] = [
     {
       title: "Primary Skills.exe",
       colSpan: 3 as const,
@@ -23,36 +28,16 @@ export default function AboutSection(){
 
   return (
     <section className="sectionGrid">
-    {/*//* About Me Section Custom retro panel */}
+
+    {/*//* General Info */}
       <RetroPanel title="About Me.txt" colSpan={3}>
+        <CustomIntro logo={textFile} primary={aboutMeData.intro}
+          secondary={[aboutMeData.bio, aboutMeData.closure]}
+        />
 
-        {/*//* Intro, Bio, Closure section */}
-        <div className="flex flex-row gap-4">
-
-          {/*//* Image on larger screens */}
-          <div className="hidden md:block min-w-15 h-15 p-2 border-3d bg-win-bg">
-            <Image src={textFile} className="w-full h-full aspect-square" alt="masterChief"/>
-          </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-row gap-2 items-center">
-              {/*//* Image on mobile */}
-              <Image src={textFile} className="block md:hidden bg-win-bg shadow-3d
-                p-1 border-3d w-8 h-8 aspect-square" alt="masterChief"
-              />
-              {/*//* Intro */}
-              <p className="text-2xl text-win-main">{aboutMeData.intro}</p>
-            </div>
-            {/*//* Bio & Closure */}
-            {[aboutMeData.bio, aboutMeData.closure].map((item, index) => (
-              <p key={index} className="text-lg md:text-xl">
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
         {/*//* Download Resume Button */}
         <div className="mt-4 flex flex-col md:flex-row gap-2">
-          {aboutMeData.resume.map((item, index) => (
+          {aboutMeData.resume.map((item:ResumeType, index:number): JSX.Element => (
             <RetroButton
               key={index}
               url={item.link}
@@ -66,8 +51,10 @@ export default function AboutSection(){
       </RetroPanel>
 
       {/*//* Primary skills & learning section retro panel*/}
-      {skillPanels.map((skillPanel, index:number): JSX.Element => (
-        <RetroPanel key={index} title={skillPanel.title} colSpan={skillPanel.colSpan} delay={index+1}>
+      {skillPanels.map((skillPanel:SkillsPanelsType, index:number): JSX.Element => (
+        <RetroPanel key={index} title={skillPanel.title}
+          colSpan={skillPanel.colSpan} delay={index+1}
+        >
           <Skills which={skillPanel.which}/>
         </RetroPanel>
       ))}

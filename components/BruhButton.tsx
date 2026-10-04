@@ -9,7 +9,7 @@ type BruhButtonProps = {
   handleWeatherClick: () => void
 }
 
-export default function BruhButton({errorCode, weatherState, handleWeatherClick}:BruhButtonProps):JSX.Element {
+export default function BruhButton({errorCode, weatherState, handleWeatherClick}:BruhButtonProps): JSX.Element {
 
   const mainMessage =
     errorCode === 1 ? "Location permission denied"

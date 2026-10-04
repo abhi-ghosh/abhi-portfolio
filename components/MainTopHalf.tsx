@@ -1,11 +1,12 @@
 import {AnimatePresence, motion} from "motion/react"
+import {JSX} from "react"
 type MainTopHalfProps = {
   title: string,
   tagPrimary: string,
   tagSecondary: string,
 }
 
-export default function MainTopHalf({title, tagPrimary, tagSecondary}: MainTopHalfProps) {
+export default function MainTopHalf({title, tagPrimary, tagSecondary}: MainTopHalfProps): JSX.Element {
   return (
     <motion.div className="text-white flex flex-row justify-between mb-6"
       initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}}

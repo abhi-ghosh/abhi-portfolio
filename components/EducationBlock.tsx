@@ -6,15 +6,14 @@ import RetroButton from "./RetroButton";
 import Separator from "./Separator";
 import cert from "@/assets/icons/cert.webp"
 import redirect from "@/assets/icons/redirect.webp"
-import internet from "@/assets/icons/internet.webp"
 type EducationTypeProps = EducationType & {
-  progress?:boolean;
+  children?:JSX.Element;
   long?:boolean;
   delay?:number;
   url?:string;
 }
 export default function EducationBlock({provider, title, years, description,
-    icons, progress=false, long=false, delay = 0, url}:EducationTypeProps):JSX.Element {
+    icons, children, long=false, delay = 0, url}:EducationTypeProps):JSX.Element {
 
   const duration: JSX.Element = <p className="text-win-muted text-md md:text-lg">{years}</p>
   const certButton = url ?  <RetroButton url={url} large={false}>
@@ -91,16 +90,8 @@ export default function EducationBlock({provider, title, years, description,
       {/*//* Separator bar */}
       <Separator/>
 
-      {/*//* Progress block for ongoing education */}
-      {progress &&
-        (<div className="flex flex-row gap-2 p-4 bg-green-100 shadow-3d">
-          <div className="flex items-center gap-2">
-            <Image src={internet} alt="certificate" className="w-5 h-5 animate-retroSpin"/>
-            <p className="text-[15px] md:text-xl text-green-800 font-bold">IN PROGRESS <span>-</span></p>
-          </div>
-          <p className="text-sm md:text-lg">Certificate pending completion.<span className="animate-blink">_</span></p>
-        </div>)
-      }
+      {/*//* Anything else one might wanna add */}
+      {children}
     </motion.section>
   );
 }

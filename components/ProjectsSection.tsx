@@ -54,9 +54,11 @@ export default function ProjectsSection({setProject, currentProject, projects}: 
       {/*//* Project Details container */}
       <RetroPanel title="Project Details.md" colSpan={4} delay={2}>
         {/*//* Project details */}
-        <motion.div className=" flex flex-col max-h-100 overflow-y-auto
+        <motion.div className="flex flex-col max-h-100 overflow-y-auto
             p-4 shadow-3d border-3d gap-3"
-            initial={{width:0, opacity:0}} animate={{width:"auto", opacity:1}} transition={{delay: 0.5}}
+            initial={{scaleX:0, width:0, opacity:0}}
+            animate={{scaleX:1, width:"auto", opacity:1}}
+            transition={{delay: 0.5}}
         >
           {/*//* Project year phone */}
           <p className="block md:hidden text-md
@@ -135,7 +137,7 @@ export default function ProjectsSection({setProject, currentProject, projects}: 
           initial={{x:-30, opacity:0}} animate={{x:0, opacity:1}} transition={{delay: 0.5}}
         >
           {currentProject.links.map((link, index) => (
-            <Link key={index} href={link.url || "#"} target={link.url ? "_blank" : "_self"}
+            <Link key={index} href={link.url || "#"} target={link.url ? "_blank" : "_self"} rel="noopener noreferrer"
               className={`${linkStyles} ${link.url ? "hover:bg-win-bg/10 active:shadow-3d active:scale-98":"cursor-not-allowed opacity-50"}`}
             >
               <Image src={link.name === "Source Code" ? code : live} alt={link.name} className="w-6 h-6 md:w-8 md:h-8" />
