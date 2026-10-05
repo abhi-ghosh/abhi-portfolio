@@ -93,7 +93,9 @@ export default function ContactSection(): JSX.Element {
               {/*//* Image, Name, Tagline */}
               <div className="flex flex-row gap-4 md:gap-6">
                 {/*//* Image Container*/}
-                <div className="relative aspect-square shrink-0 bg-win-bg border-3d">
+                <div className="relative w-16 aspect-square shrink-0
+                  bg-win-bg border-3d"
+                >
                   {/*//* Image */}
                   <Image
                     src={link.icon}
