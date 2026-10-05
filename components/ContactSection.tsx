@@ -150,10 +150,14 @@ export default function ContactSection(): JSX.Element {
           {/*//* Separator */}
           <Separator/>
           {/*//* Info Blocks */}
-          {contactData.status.map((c:ContactStatusType): JSX.Element=>(
-            <TinyInfoBlock key={c.label} primary={c.label} secondary={c.message}
-              logo={c.logo} color={c.color} animate={c.animate} smallIcon={c.smallIcon}
-            />
+          {contactData.status.map((c: ContactStatusType, index: number): JSX.Element=>(
+            <motion.div key={c.label}
+              initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.4+0.2*index}}
+            >
+              <TinyInfoBlock primary={c.label} secondary={c.message}
+                logo={c.logo} color={c.color} animate={c.animate} smallIcon={c.smallIcon}
+              />
+            </motion.div>
           ))}
         </div>
       </RetroPanel>
