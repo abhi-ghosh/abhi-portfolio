@@ -735,7 +735,7 @@ const contactData: ContactType = {
 
   status: [{
     label:"CONNECTION PROTOCOL",
-    message:"Replies usually within 24 hours",
+    message:"Reply time <= 24hrs",
     logo: network,
     color: "blue",
     animate: "none",
@@ -771,16 +771,16 @@ const memoryData: MemoryDataType = {
 
   footer: [
     {
-      label:"THEN:",
-      message: "learning to use a computer",
+      label:"THEN",
+      message: "Learning to use a computer",
       logo:floppy,
       color:"blue",
       animate:"flip",
       smallIcon:false
     },
     {
-      label:"NOW:",
-      message: "learning to build for one",
+      label:"NOW",
+      message: "Learning to build for one",
       logo:cd,
       color:"green",
       animate:"spin",

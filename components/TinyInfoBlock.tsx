@@ -19,10 +19,10 @@ export default function TinyInfoBlock({logo, primary, secondary, color, animate,
   const animation: {[key: string]: string} = {"ping":"animate-pingRetro", "spin":"animate-retroSpin","flip":"animate-flipVertical" , "none":""}
 
   return (
-    <div className={`flex flex-row gap-2 w-full p-4 ${colors[color].bg} shadow-3d`}>
+    <div className={`flex flex-row gap-2 w-full items-center p-4 ${colors[color].bg} shadow-3d`}>
       <div className="flex items-center gap-2">
         {logo && <Image src={logo} alt="certificate" className={`${smallIcon ? "w-3 h-3" : "w-5 h-5"} ${animation[animate]}`}/>}
-        {primary && <p className={`text-[15px] md:text-xl ${colors[color].text} font-bold`}>{primary} <span>-</span></p>}
+        {primary && <p className={`text-[15px] md:text-xl ${colors[color].text} font-bold`}>{primary}:</p>}
       </div>
       <p className={`text-sm md:text-lg ${italics && "italic"}`}>{secondary}<span className="animate-blink">_</span></p>
     </div>
