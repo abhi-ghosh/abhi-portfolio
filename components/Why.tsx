@@ -75,7 +75,9 @@ export default function Why(): JSX.Element{
             <div className="flex flex-col md:flex-row gap-2">
               {/*//* Footer blocks */}
               {memoryData.footer.map((item:ContactStatusType, index: number): JSX.Element => (
-                <motion.div key={item.label} {...yAnimate} transition={{delay: 0.8+0.1*index}}>
+                <motion.div key={item.label} className="w-full"
+                  {...yAnimate} transition={{delay: 0.8+0.1*index}}
+                >
                   <TinyInfoBlock primary={item.label} animate={item.animate}
                     secondary={item.message} logo={item.logo} color={item.color}
                     smallIcon={item.smallIcon}
