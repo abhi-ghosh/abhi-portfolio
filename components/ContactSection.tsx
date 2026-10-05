@@ -93,8 +93,8 @@ export default function ContactSection(): JSX.Element {
               {/*//* Image, Name, Tagline */}
               <div className="flex flex-row gap-4 md:gap-6">
                 {/*//* Image Container*/}
-                <div className="relative w-16 aspect-square shrink-0
-                  bg-win-bg border-3d"
+                <div className="relative min-w-12 aspect-square
+                  shrink-0 bg-win-bg border-3d"
                 >
                   {/*//* Image */}
                   <Image
@@ -150,7 +150,9 @@ export default function ContactSection(): JSX.Element {
             </motion.div>
           ))}
           {/*//* Separator */}
-          <Separator/>
+          <div className="hidden md:block">
+            <Separator/>
+          </div>
           {/*//* Info Blocks */}
           {contactData.status.map((c: ContactStatusType, index: number): JSX.Element=>(
             <motion.div key={c.label}
