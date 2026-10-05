@@ -5,7 +5,7 @@ type TinyInforBlockProps = {
   primary?:string;
   secondary:string;
   color:"green"|"blue"|"yellow"|"red";
-  animate: "ping"|"spin"|"none";
+  animate: "ping"|"spin"|"flip"|"none";
   italics?:boolean;
   smallIcon?:boolean;
 }
@@ -16,10 +16,10 @@ export default function TinyInfoBlock({logo, primary, secondary, color, animate,
     yellow:{bg:"bg-yellow-100",text:"text-yellow-800"},
     red:{bg:"bg-red-100",text:"text-red-800"}
   }
-  const animation: {[key: string]: string} = {"ping":"animate-pingRetro", "spin":"animate-retroSpin", "none":""}
+  const animation: {[key: string]: string} = {"ping":"animate-pingRetro", "spin":"animate-retroSpin","flip":"animate-flipVertical" , "none":""}
 
   return (
-    <div className={`flex flex-row gap-2 p-4 ${colors[color].bg} shadow-3d`}>
+    <div className={`flex flex-row gap-2 w-full p-4 ${colors[color].bg} shadow-3d`}>
       <div className="flex items-center gap-2">
         {logo && <Image src={logo} alt="certificate" className={`${smallIcon ? "w-3 h-3" : "w-5 h-5"} ${animation[animate]}`}/>}
         {primary && <p className={`text-[15px] md:text-xl ${colors[color].text} font-bold`}>{primary} <span>-</span></p>}

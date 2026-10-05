@@ -46,6 +46,10 @@ import greenorb from "@/assets/icons/greenorb.webp";
 import jobsdb from "@/assets/contactIcons/jobsdb.webp";
 import linkedin from "@/assets/contactIcons/linkedin.webp";
 import network from "@/assets/icons/network.webp";
+import windesk from "@/assets/windesk.gif";
+import floppy from "@/assets/icons/floppy.webp"
+import cd from "@/assets/icons/cd.webp"
+import { small } from "motion/react-client";
 
 //* Data type
 type DataType = {
@@ -160,12 +164,13 @@ type LinkType = {
   icon:StaticImageData;
 };
 
+//*Contact Status Type
 type ContactStatusType = {
     label:string;
     message:string;
     logo: StaticImageData;
     color: "green"|"blue"|"yellow"|"red";
-    animate: "ping"|"spin"|"none";
+    animate: "ping"|"spin"|"flip"|"none";
     smallIcon:boolean;
 }
 
@@ -183,7 +188,17 @@ type ContactType = {
   status: ContactStatusType[];
 }
 
+//* Project Button Type
 type ProjectButtonType = typeof projects[number]["id"];
+
+//* Memory Data Type
+type MemoryDataType = {
+  computer: StaticImageData,
+  badge: string;
+  quote: string;
+  paragraphs: string[];
+  footer: ContactStatusType[];
+}
 
 const personalData: {name: string, title: string} = {
   name: "Abhijit Ghosh",
@@ -401,7 +416,7 @@ const buttons: ButtonType[] = [
     title: "WHY?",
     name: "why",
     icon: win,
-    tagPrimary: "Why this style?",
+    tagPrimary: "A small tribute to the computer that started it all.",
     tagSecondary: "Going full circle."
   }
 ];
@@ -737,9 +752,49 @@ const contactData: ContactType = {
   ]
 }
 
-export {personalData, buttons, status, weatherData, aboutMeData, currentlyEnrolled,
-  formalEducation, certifications, projects, contactData
+const memoryData: MemoryDataType = {
+
+  computer: windesk,
+
+  badge: "WHY WINDOWS 98?",
+
+  quote:
+    '"Before I knew what code was, I knew the feeling of discovering something on a computer."',
+
+  paragraphs: [
+    "My first real memory of a computer goes back to school. We had old machines running Windows 98. To someone else they might have looked outdated, but to me they felt like magic, the heavy monitor, the click of the mouse, the tiny icons, and the feeling that an entire world was waiting behind that blue screen.",
+
+    "I wanted to click everything, understand how it worked, and see what would happen next. I didn't know it then, but that curiosity would stay with me. What started as wanting to understand a computer eventually became wanting to understand what I could build with one.",
+
+    "This portfolio is a small tribute to where that curiosity began. The computer is different now, but the feeling hasn't changed, I'm still learning, still building, and still wondering what happens when I click the next thing.",
+  ],
+
+  footer: [
+    {
+      label:"THEN:",
+      message: "learning to use a computer",
+      logo:floppy,
+      color:"blue",
+      animate:"flip",
+      smallIcon:false
+    },
+    {
+      label:"NOW:",
+      message: "learning to build for one",
+      logo:cd,
+      color:"green",
+      animate:"spin",
+      smallIcon:false
+    }
+  ],
+
 };
+
+export {personalData, buttons, status, weatherData, aboutMeData,
+  currentlyEnrolled, formalEducation, certifications, projects,
+  contactData, memoryData
+};
+
 export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType,
     WeatherValueType, LocationDataType, LocationType, HobbyType, AboutMeType, EducationType,
     ProjectType, ProjectButtonType, LinkType, ResumeType, ContactStatusType};

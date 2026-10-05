@@ -16,6 +16,29 @@
   --animate-blink: blink 1s steps(2, start) infinite;
   --animate-retroSpin: retroSpin 0.8s steps(4) infinite;
   --animate-pingRetro: pingRetro 1.5s steps(3) infinite;
+  --animate-flipVertical: flipVertical 1.5s steps(4) infinite;
+}
+
+@keyframes flipVertical {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  25% {
+    transform: rotateY(90deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  75% {
+    transform: rotateY(270deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes pingRetro {
@@ -64,6 +87,52 @@
 }
 @utility sectionGrid {
   @apply grid grid-cols-1 min-[1200px]:grid-cols-6 gap-5;
+}
+
+@utility bg-retro-grid {
+  background-color: #008080;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.22) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.22) 1px,
+      transparent 1px
+    );
+
+  background-size: 28px 28px;
+}
+
+@utility retro-corners {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: #000;
+    border-style: solid;
+  }
+
+  /* Top-left */
+  &::before {
+    top: 20px;
+    left: 20px;
+    border-width: 3px 0 0 3px;
+  }
+
+  /* Bottom-right */
+  &::after {
+    right: 20px;
+    bottom: 20px;
+    border-width: 0 3px 3px 0;
+  }
 }
 
 html {
