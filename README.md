@@ -10,8 +10,6 @@
   <a href="https://github.com/abhi-ghosh/abhi-portfolio">💻 Source Code</a>
 </p>
 
-<img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,motion,vercel&theme=light" alt="Technology stack" />
-
 <br />
 
 ![Status](https://img.shields.io/badge/status-live-008080?style=for-the-badge)
@@ -205,7 +203,12 @@ The result is a reusable styling system rather than a collection of one-off visu
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,vercel,git,github,vscode,figma&theme=light" alt="Technology icons" />
+![Status](https://img.shields.io/badge/status-live-008080?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Motion](https://img.shields.io/badge/Motion-000000?style=for-the-badge&logo=framer&logoColor=white)
 
 </div>
 
