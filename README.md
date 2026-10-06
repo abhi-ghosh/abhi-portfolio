@@ -4,12 +4,6 @@
 
 ### A Windows 98-inspired developer portfolio built with modern frontend technology.
 
-<p>
-  <a href="https://abhiwillcode.vercel.app/">🌐 Live Site</a>
-  •
-  <a href="https://github.com/abhi-ghosh/abhi-portfolio">💻 Source Code</a>
-</p>
-
 <br />
 
 ![Status](https://img.shields.io/badge/status-live-008080?style=for-the-badge)
