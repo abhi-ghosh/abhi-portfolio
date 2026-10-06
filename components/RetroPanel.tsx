@@ -19,7 +19,7 @@ export default function RetroPanel({title, children, colSpan, delay}: RetroPanel
           min-w-0 ${colSpan ? colSpanClass[colSpan] : ""}`}
           layout
           initial={{opacity:0, scale:0}} animate={{opacity:1, scale:1}} exit={{opacity:0}}
-          transition={{delay: delay ? delay * 0.1 : 0, layout:{duration:0.2}}}
+          transition={{delay: delay ? delay * 0.1 : 0}}
       >
         <div className="flex flex-row justify-between items-center bg-win-accent p-2">
           <p className="text-xl font-bold text-white">{title}</p>

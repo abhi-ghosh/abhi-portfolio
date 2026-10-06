@@ -145,11 +145,13 @@ export default function WorkExp({currentCompany, setCompany,workExperience }:Wor
       </RetroPanel>
 
       {/*//* Kitty!!!!! */}
-      <RetroPanel title="Kitty.exe" colSpan={2}>
+      <RetroPanel title="Kitty.exe" colSpan={2} delay={4}>
         <div className="relative min-h-50 w-full bg-win-bg h-full">
           <Image src={kitty} alt="kitty"
             fill
             className="object-contain border-3d"
+            sizes="180px"
+            unoptimized
           />
         </div>
       </RetroPanel>
