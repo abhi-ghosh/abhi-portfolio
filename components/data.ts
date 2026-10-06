@@ -858,7 +858,7 @@ const workExperience: WorkExperienceType[] = [
     number: "02",
     period: "Aug 2023 - Present",
     role: "Founder & Content Creator",
-    company: "Pugee — Independent",
+    company: "YouTube (Pugee) — Independent",
     type: "CREATOR",
     icon: video,
     icon2: movieClap,
