@@ -5,6 +5,7 @@ import TinyInfoBlock from "@/components/TinyInfoBlock";
 import retroEmail from "@/assets/icons/retroEmail.gif";
 import redirectretro from "@/assets/icons/redirectretro.webp";
 import Separator from "@/components/Separator";
+import TextOptions from "@/components/TextOptions";
 import copy from "@/assets/icons/copy.webp";
 import {contactData, LinkType, ContactStatusType} from "@/components/data";
 import {JSX, useState} from "react";
@@ -62,16 +63,7 @@ export default function ContactSection(): JSX.Element {
               CURRENTLY OPEN TO<span className="animate-blink">-</span>
             </div>
             {/*//* Open to options */}
-            <div className="flex flex-row gap-2 flex-wrap">
-              {contactData.availability.map((item:string, index: number):JSX.Element => (
-                <motion.p key={item} className="p-1 md:p-2 text-md
-                  md:text-lg text-white border-3d bg-win-bg"
-                  initial={{scale:0}} animate={{scale:1}} transition={{delay: 0.2*index}}
-                >
-                    {item}
-                </motion.p>
-              ))}
-            </div>
+            <TextOptions arr={contactData.availability} color="dark"/>
           </div>
           <Separator/>
           <TinyInfoBlock animate="none" secondary={`"${contactData.intro.quoteB}"`}

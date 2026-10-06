@@ -49,7 +49,11 @@ import network from "@/assets/icons/network.webp";
 import windesk from "@/assets/windesk.gif";
 import floppy from "@/assets/icons/floppy.webp"
 import cd from "@/assets/icons/cd.webp"
-import { small } from "motion/react-client";
+import construction from "@/assets/icons/construction.webp"
+import oldComputer from "@/assets/icons/oldComputer.webp"
+import video from "@/assets/icons/video.webp"
+import movieClap from "@/assets/icons/movieClap.webp"
+import buildings from "@/assets/icons/buildings.webp"
 
 //* Data type
 type DataType = {
@@ -143,19 +147,6 @@ type EducationType = {
   }[];
 };
 
-//* Projects Type
-type ProjectType = {
-  id: string;
-  name: string;
-  tagline: string;
-  year: string;
-  icon: string | StaticImageData;
-  description: string;
-  features: string[];
-  techStack: TechType[];
-  links: {name: string, url: string|false}[];
-};
-
 //*Link Type
 type LinkType = {
   name:string;
@@ -188,6 +179,19 @@ type ContactType = {
   status: ContactStatusType[];
 }
 
+//* Projects Type
+type ProjectType = {
+  id: "linkdefender"|"patient-sync"| "pokedex" | "little-lemon"|"portfolio";
+  name: string;
+  tagline: string;
+  year: string;
+  icon: string | StaticImageData;
+  description: string;
+  features: string[];
+  techStack: TechType[];
+  links: {name: string, url: string|false}[];
+};
+
 //* Project Button Type
 type ProjectButtonType = typeof projects[number]["id"];
 
@@ -199,6 +203,24 @@ type MemoryDataType = {
   paragraphs: string[];
   footer: ContactStatusType[];
 }
+//* Work Experience Type
+type WorkExperienceType = {
+  id:"frontend"|"pugee"|"family-business";
+  name:string;
+  number:string;
+  period:string;
+  role:string;
+  company:string;
+  type:string;
+  icon:StaticImageData;
+  icon2:StaticImageData;
+  color:{bg:string,picBg:string};
+  description:string[];
+  tools:string[]
+}
+
+//* Work Experience Button Type
+type WorkExperienceButtonType = typeof workExperience[number]["id"];
 
 const personalData: {name: string, title: string} = {
   name: "Abhijit Ghosh",
@@ -790,11 +812,117 @@ const memoryData: MemoryDataType = {
 
 };
 
+const workExperience: WorkExperienceType[] = [
+  {
+    id: "frontend",
+    name: "Front-End Developer",
+    number: "01",
+    period: "Jul 2025 - Present",
+    role: "Self-Employed Front-End Developer",
+    company: "Independent Projects",
+    type: "SELF-EMPLOYED",
+    icon: oldComputer,
+    icon2: computer,
+    color:{
+      bg:"bg-blue-200",
+      picBg:"bg-blue-300"
+    },
+
+    description: [
+      "Design and build self-directed web applications that turn ideas into useful, working products.",
+      "Take projects from interface design through development, testing, and deployment.",
+      "Build with React and the modern JavaScript/TypeScript ecosystem, focusing on responsive UI and user experience.",
+      "Continuously improve accessibility, performance, and code quality through hands-on testing and browser DevTools.",
+    ],
+
+    tools: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Motion",
+      "Vite",
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Figma",
+      "Vercel",
+      "Render"
+    ],
+  },
+
+  {
+    id: "pugee",
+    name: "Content Creator",
+    number: "02",
+    period: "Aug 2023 - Present",
+    role: "Founder & Content Creator",
+    company: "Pugee — Independent",
+    type: "CREATOR",
+    icon: video,
+    icon2: movieClap,
+    color:{
+      bg:"bg-green-100",
+      picBg:"bg-green-200"
+    },
+
+    description: [
+      "Grew and monetized a YouTube channel from 0 to 9,800+ subscribers and 11M+ views.",
+      "Owned the entire production pipeline, from filming and scripting to editing and publishing.",
+      "Handled video editing, audio processing, thumbnail design, and post-production independently.",
+      "Built practical skills in visual communication, audio engineering, and creative production.",
+    ],
+
+    tools: [
+      "DaVinci Resolve",
+      "OBS Studio",
+      "FL Studio",
+      "Reaper",
+      "GIMP",
+      "Audio Processing",
+      "Sound Design"
+    ],
+  },
+
+  {
+    id: "family-business",
+    name: "Client Relations",
+    number: "03",
+    period: "May 2018 - Present",
+    role: "Client Relations & Operations Assistant",
+    company: "Family-Owned Construction Business",
+    type: "FAMILY BUSINESS",
+    icon: construction,
+    icon2: buildings,
+    color:{
+      bg:"bg-yellow-100",
+      picBg:"bg-yellow-200"
+    },
+
+    description: [
+      "Presented residential properties to prospective clients and guided them through purchasing decisions.",
+      "Worked directly with clients throughout the property presentation and purchasing process.",
+      "Managed property paperwork and records with a strong focus on accuracy.",
+      "Maintained consistent processes for handling documentation and operational records.",
+    ],
+
+    tools: [
+      "Client Relations",
+      "Property Presentation",
+      "Documentation",
+      "Record Management",
+      "Communication",
+    ],
+  },
+];
+
 export {personalData, buttons, status, weatherData, aboutMeData,
   currentlyEnrolled, formalEducation, certifications, projects,
-  contactData, memoryData
-};
+  contactData, memoryData, workExperience
+  };
 
-export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType,
+export type {DataType, TechType, ButtonType, WhichButtonStateType, WeatherType, WorkExperienceType,
     WeatherValueType, LocationDataType, LocationType, HobbyType, AboutMeType, EducationType,
-    ProjectType, ProjectButtonType, LinkType, ResumeType, ContactStatusType};
+    ProjectType, ProjectButtonType, LinkType, ResumeType, ContactStatusType, WorkExperienceButtonType
+  };

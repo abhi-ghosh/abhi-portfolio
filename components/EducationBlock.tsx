@@ -6,6 +6,7 @@ import RetroButton from "./RetroButton";
 import Separator from "./Separator";
 import cert from "@/assets/icons/cert.webp"
 import redirect from "@/assets/icons/redirect.webp"
+import Badge from "@/components/Badge";
 type EducationTypeProps = EducationType & {
   children?:JSX.Element;
   long?:boolean;
@@ -50,11 +51,8 @@ export default function EducationBlock({provider, title, years, description,
             initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{delay: delay}}
           >
             <div className="flex flex-row gap-2 items-center">
-              <p className="bg-win-accent text-white text-sm md:text-md w-max
-                px-3 py-1 border-3d border"
-              >
-                {provider}
-              </p>
+              {/*//* Provider of the course */}
+              <Badge title={provider} small={true} animation="x" delay={delay+0.2}/>
               {/*//* Duration of the course (if long) */}
               {long && duration}
             </div>

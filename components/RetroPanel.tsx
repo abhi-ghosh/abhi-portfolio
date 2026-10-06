@@ -17,7 +17,9 @@ export default function RetroPanel({title, children, colSpan, delay}: RetroPanel
   return (
       <motion.div className={`bg-win-panel border-3d shadow-3d flex flex-col col-span-full
           min-w-0 ${colSpan ? colSpanClass[colSpan] : ""}`}
-        initial={{opacity:0, scale:0}} animate={{opacity:1, scale:1}} exit={{opacity:0}} transition={{delay: delay ? delay * 0.1 : 0}}
+          layout
+          initial={{opacity:0, scale:0}} animate={{opacity:1, scale:1}} exit={{opacity:0}}
+          transition={{delay: delay ? delay * 0.1 : 0, layout:{duration:0.2}}}
       >
         <div className="flex flex-row justify-between items-center bg-win-accent p-2">
           <p className="text-xl font-bold text-white">{title}</p>

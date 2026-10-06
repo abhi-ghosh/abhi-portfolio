@@ -4,6 +4,7 @@ import {memoryData, ContactStatusType} from "@/components/data"
 import RetroPanel from "@/components/RetroPanel";
 import TinyInfoBlock from "@/components/TinyInfoBlock";
 import {motion} from "motion/react"
+import Badge from "@/components/Badge";
 export default function Why(): JSX.Element{
 
   //* y axis animation
@@ -33,15 +34,11 @@ export default function Why(): JSX.Element{
               sizes="200px"
             />
           </motion.div>
-          {/*//* Badge */}
           <div className="flex-2 flex flex-col gap-3 md:gap-4">
-            <motion.p className="p-2 bg-win-bg text-white
-              w-max border-3d text-xs md:text-lg"
-              initial={{x:200, opacity:0}} animate={{x:0,opacity:1}}
-              transition={{delay: 0.5}}
-            >
-              {memoryData.badge}
-            </motion.p>
+            {/*//* Badge */}
+            <Badge title={memoryData.badge} animation="x"
+              delay={0.5} light={true}
+            />
             {/*//* Big heading quote */}
             <motion.h1 className="text-[25px] md:text-[30px]
                 lg:text-[37px] font-bold"

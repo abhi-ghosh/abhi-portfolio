@@ -5,7 +5,9 @@ import {motion} from "motion/react"
 import Panel from "@/components/Panel";
 import {
   buttons, projects, ButtonType, WhichButtonStateType,
-  LocationDataType, ProjectType, ProjectButtonType
+  LocationDataType, ProjectType, ProjectButtonType,
+  WorkExperienceButtonType, workExperience,
+  WorkExperienceType
 } from "@/components/data";
 import Button from "@/components/Button";
 import NavBar from "@/components/Navbar";
@@ -51,6 +53,12 @@ export default function Home(): JSX.Element| null {
   //* Current Project
   const currentProject: ProjectType|undefined = projects.find((p)=> p.id === project);
 
+  //* Company State
+  const [company, setCompany] = useState<WorkExperienceButtonType>("frontend");
+
+  //*Current Company
+  const currentCompany: WorkExperienceType|undefined =
+    workExperience.find((c)=>c.id === company)
 
   //* If current button is not found return null (TypeScript reccomendation)
   if (!currentButton) {
@@ -148,7 +156,10 @@ export default function Home(): JSX.Element| null {
       case "work":
         mainUI = (
           <motion.div key="work" {...fade}>
-            <WorkExp />
+            <WorkExp currentCompany={currentCompany}
+              setCompany={setCompany}
+              workExperience={workExperience}
+            />
           </motion.div>
         );
         break;
