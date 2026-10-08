@@ -54,6 +54,8 @@ import oldComputer from "@/assets/icons/oldComputer.webp"
 import video from "@/assets/icons/video.webp"
 import movieClap from "@/assets/icons/movieClap.webp"
 import buildings from "@/assets/icons/buildings.webp"
+import datacom from "@/assets/educationIcons/datacom.webp"
+import forage from "@/assets/educationIcons/forage.webp"
 
 //* Data type
 type DataType = {
@@ -510,6 +512,18 @@ const formalEducation: EducationType = {
 };
 
 const certifications: (EducationType & {url:string})[] = [
+  {
+    provider: "DATACOM X FORAGE",
+    title: "Datacom Software Development Job Simulation",
+    years: "2026",
+    description:
+      "Software development simulation covering application evaluation, customer feedback analysis, root cause analysis, debugging, and implementing software fixes.",
+    icons: [
+      { icon: datacom, name: "datacom icon" },
+      { icon: forage, name: "forage icon" }
+    ],
+    url: "https://www.theforage.com/completion-certificates/gCW7Xki5Y3vNpBmnn/L3NcyCoAjLno9d3T9_gCW7Xki5Y3vNpBmnn_6ac6225f4b1a13b1260ae13d_1791383210884_completion_certificate.pdf"
+  },
   {
     provider: "META X COURSERA",
     title: "Meta Front-End Developer Professional Certificate",
