@@ -207,7 +207,7 @@ type MemoryDataType = {
 }
 //* Work Experience Type
 type WorkExperienceType = {
-  id:"frontend"|"pugee"|"family-business";
+  id:"frontend"|"creator"|"family-business";
   name:string;
   number:string;
   period:string;
@@ -867,12 +867,12 @@ const workExperience: WorkExperienceType[] = [
   },
 
   {
-    id: "pugee",
+    id: "creator",
     name: "Content Creator",
     number: "02",
     period: "Aug 2023 - Present",
     role: "Founder & Content Creator",
-    company: "YouTube (Pugee) — Independent",
+    company: "YouTube — Independent",
     type: "CREATOR",
     icon: video,
     icon2: movieClap,
