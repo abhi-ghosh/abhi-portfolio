@@ -882,7 +882,7 @@ const workExperience: WorkExperienceType[] = [
     },
 
     description: [
-      "Grew and monetized a YouTube channel from 0 to 9,800+ subscribers and 11M+ views.",
+      "Grew and monetized a YouTube channel from 0 to 10,000+ subscribers and 11M+ views.",
       "Owned the entire production pipeline, from filming and scripting to editing and publishing.",
       "Handled video editing, audio processing, thumbnail design, and post-production independently.",
       "Built practical skills in visual communication, audio engineering, and creative production.",
